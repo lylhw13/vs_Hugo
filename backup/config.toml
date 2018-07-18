@@ -1,0 +1,18 @@
+baseURL = "http://lylhw13.github.io/"
+languageCode = "en-us"
+title = "My New Hugo Site"
+theme = "even" 
+[menu]
+
+  [[menu.main]]
+    identifier = "about"
+    name = "about hugo"
+    pre = "<i class='fa fa-heart'></i>"
+    url = "/about/"
+    weight = -110
+
+  [[menu.main]]
+    name = "getting started"
+    pre = "<i class='fa fa-road'></i>"
+    url = "/post/"
+    weight = -100
