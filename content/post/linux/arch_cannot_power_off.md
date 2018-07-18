@@ -8,6 +8,8 @@ draft: true
 
 ## method 1 (not work)
 
+upgrade the system
+
 ```sh
 pacman -Syu
 ```

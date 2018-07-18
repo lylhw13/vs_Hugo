@@ -265,6 +265,8 @@ No networks found
 
 解决办法：
 
+参考链接<https://bbs.archlinux.org/viewtopic.php?pid=1324810#p1324810>
+
 ### step 1
 
 ```sh
