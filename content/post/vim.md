@@ -1,9 +1,9 @@
 ---
 title: "Vim"
 date: 2018-07-06T11:09:09+08:00
-draft: true
-tags: ["Vim"]
-categories: ["Vim"]
+draft: False
+tags: ["vim"]
+categories: ["vim"]
 ---
 
 # vim commands
@@ -59,3 +59,18 @@ vim +n filename #注意 + 和 n 之间没有空格
 ctrl + g 会返回如下信息：
 `"filename" m lines --n%--`
 其中m为总行数，n为当前行所在整个文件的位置比例。
+
+## 刷新vim内容
+
+刷新内容：`:e` 或者`:edit`
+
+强制刷新内容：`:e!`或者`:edit!`
+
+## 删除引号中的内容，其他配对括号同理如'', (), {}, <>
+
+```vim
+ci"     #删除引号中的内容，并进入编辑模式
+di"     #删除引号中的内容
+yi"     #复制引号中的内容
+vi"     #选中引号中的内容
+```
