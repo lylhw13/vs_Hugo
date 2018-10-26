@@ -7,3 +7,9 @@ draft: false
 # This is my personal blog
 
 ## 尝试收集总结生活学习中的点滴。
+
+```sh
+cd Downloads/ 
+. .bashrc
+virtuoso &
+```
