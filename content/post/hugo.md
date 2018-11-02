@@ -1,7 +1,7 @@
 ---
 title: "使用Hugo搭建个人博客并部署到GitHub上"
 date: 2018-06-30T15:26:58+08:00
-draft: true
+draft: false
 topics: ["Hugo", "GitHub"]
 tags: ["Hugo", "GitHub"]
 categories: ["Hugo"]

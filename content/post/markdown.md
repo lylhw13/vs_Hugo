@@ -1,10 +1,11 @@
 ---
-title: "Markdown"
+title: "一些 markdown 语法"
 date: 2018-09-10T15:31:16+08:00
-draft: true
+draft: false
+tags: ["Markdown"]
+categories: ["Markdown"]
 ---
 
-# some markdown 语法
 
 <https://markdown-zh.readthedocs.io/en/latest/blockelements/>
 

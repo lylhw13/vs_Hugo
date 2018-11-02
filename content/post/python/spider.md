@@ -2,7 +2,8 @@
 title: "Spider"
 date: 2018-07-26T10:30:24+08:00
 draft: true
-tage: ["python", "scrapy"] 
+tage: ["Python", "Scrapy"] 
+categories: ["Python"]
 ---
 
 ```sh

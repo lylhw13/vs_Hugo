@@ -1,7 +1,7 @@
 ---
 title: "Arch 安装"
 date: 2018-07-01T15:09:30+08:00
-draft: true
+draft: flase
 tags: ["Arch"]
 categories: ["linux"]
 ---

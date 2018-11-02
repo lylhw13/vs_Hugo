@@ -1,10 +1,10 @@
 ---
-title: "Amp"
+title: "Windows 10下Apache + PHP + Mysql的环境配置"
 date: 2018-09-11T09:55:53+08:00
-draft: true
+draft: false
+tags: ["Windows","Apache","Php","Mysql"]
+categories: ["Windows"]
 ---
-
-# Windows10 下Apache+PHP+MySQL搭建历程
 
 参考文章如下:
 

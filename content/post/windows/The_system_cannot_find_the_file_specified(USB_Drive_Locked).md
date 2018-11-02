@@ -1,7 +1,9 @@
 ---
-title: "The_system_cannot_find_the_file_specified(USB_Drive_Locked)"
+title: "The system cannot find the file specified(USB Drive Locked)"
 date: 2018-10-26T16:30:31+08:00
-draft: true
+draft: false
+tags: ["USB", "windows"]
+categories: ["Windows"]
 ---
 
 System: Windows

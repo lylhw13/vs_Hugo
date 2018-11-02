@@ -1,8 +1,8 @@
 ---
-title: "Arch_commands"
+title: "Linux commands"
 date: 2018-07-05T16:05:06+08:00
-draft: true
-tags: ["Arch"]
+draft: false
+tags: ["Linux"]
 categories: ["Linux"]
 ---
 

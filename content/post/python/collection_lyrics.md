@@ -34,16 +34,3 @@ pip install fake_useragent
 pip install pypiwin32
 pip install Pillow
 ```
-
- scrapy shell -s USER_AGENT="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36" "https://book.douban.com/subject/1261560/"
-
- scrapy shell -s USER_AGENT="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36" "https://book.douban.com/subject/1261560/"
-
-
-
-
- # amp
- download phpmyadmin <https://www.phpmyadmin.net/>
- download php5.6 <https://windows.php.net/download#php-5.6>
-
- it works! http://localhost:8080/Apache24/htdocs

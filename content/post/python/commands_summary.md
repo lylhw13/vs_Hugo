@@ -1,7 +1,9 @@
 ---
-title: "Commands_summary"
+title: "Commands summary"
 date: 2018-07-26T17:35:52+08:00
-draft: true
+draft: false
+tags: ["Python"]
+categories: ["Python"]
 ---
 
 # some commands

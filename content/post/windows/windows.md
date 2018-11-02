@@ -1,12 +1,10 @@
 ---
-title: "Windows"
+title: "Windows的操作总结"
 date: 2018-07-03T14:36:08+08:00
-draft: true
+draft: false
 tags: ["Windows"]
 categories: ["Windows"]
 ---
-
-# Windows的操作总结
 
 ## 添加软件的自动启动
 

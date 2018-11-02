@@ -1,9 +1,9 @@
 ---
 title: "My First Blog"
 date: 2018-06-29T10:13:02+08:00
-draft: true
-tags: ["moods"]
-categories: ["moods"]
+draft: false
+tags: ["Moods"]
+categories: ["Moods"]
 ---
 
 这是第一篇博客。

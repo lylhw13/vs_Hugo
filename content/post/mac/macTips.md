@@ -1,13 +1,15 @@
 ---
-title: "macTips"
+title: "Mac tips"
 date: 2018-10-21T10:33:50+08:00
-draft: true
+draft: false
+tags: ["Tips"]
+categories: ["Mac"]
 ---
-# shortcuts
+# Shortcuts
 - `control + a` to go beginning of a line
 - `control + e` to go end of a line
 
-# terminal
+# Terminal
 ```sh
 # calculate md5 checksum
 md5 /tmp/filename
