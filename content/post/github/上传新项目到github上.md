@@ -2,10 +2,9 @@
 title: "上传新项目到github上"
 date: 2018-07-31T11:12:10+08:00
 draft: False
-tags: ["github"]
+tags: ["Github"]
+categories: ["Github"]
 ---
-
-# 上传新项目到github上
 
 在本地文件夹下面的操作：
 

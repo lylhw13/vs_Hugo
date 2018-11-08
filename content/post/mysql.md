@@ -1,7 +1,9 @@
 ---
 title: "Mysql"
 date: 2018-09-05T16:15:23+08:00
-draft: true
+draft: false
+tags: ["Mysql"]
+categories: ["Mysql"]
 ---
 
 # install mysql

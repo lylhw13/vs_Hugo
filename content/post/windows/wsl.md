@@ -1,5 +1,5 @@
 ---
-title: "Wsl"
+title: "Windows Subsystem for Linux"
 date: 2018-10-26T13:29:51+08:00
 draft: true
 ---

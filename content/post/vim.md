@@ -1,12 +1,10 @@
 ---
-title: "Vim"
+title: "Vim commands"
 date: 2018-07-06T11:09:09+08:00
-draft: False
+draft: false
 tags: ["vim"]
 categories: ["vim"]
 ---
-
-# vim commands
 
 ## 删除到文件结尾
 

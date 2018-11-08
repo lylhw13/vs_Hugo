@@ -1,7 +1,9 @@
 ---
-title: "macTips"
+title: "Mac tips"
 date: 2018-10-21T10:33:50+08:00
-draft: true
+draft: false
+tags: ["Tips"]
+categories: ["Mac"]
 ---
 # shortcuts
 
@@ -25,7 +27,7 @@ commands | function
 
 Reference: [Top 10 Mac keyboard shortcuts everyone should know](https://www.cultofmac.com/317935/top-10-mac-keyboard-shortcuts/)
 
-# terminal
+# Terminal
 ```sh
 # calculate md5 checksum
 md5 /tmp/filename

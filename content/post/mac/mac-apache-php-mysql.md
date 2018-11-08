@@ -1,16 +1,19 @@
 ---
-title: "Apache Php Mysql"
+title: "Mac下Apache + Php + Mysql的环境配置"
 date: 2018-10-20T15:38:19+08:00
-draft: true
+draft: false
+tags: ["Mac","Apache","Php","Mysql"]
+categories: ["Mac"]
 ---
 
 # mac 下配置Apache+PHP+Mysql环境
 
 参考<https://www.jianshu.com/p/2fb9a3bb12f6>，主要步骤按照其操作均可完成，但是仍有一些错误，需要解决。
 
-有一个极为详细到英文版本，还没有来得及参考[Get Apache, MySQL, PHP and phpMyAdmin working on OSX 10.11 El Capitan](http://coolestguidesontheplanet.com/get-apache-mysql-php-and-phpmyadmin-working-on-osx-10-11-el-capitan/)。
+有一个极为详细到英文版本，还没有来得及参考[Get Apache, MySQL, PHP and phpMyAdmin working on OSX 10.11 El Capitan](http://coolestguidesontheplanet.com/get-apache-mysql-php-and-phpmyadmin-working-on-osx-10-11-el-capitan/)。
 
 macOS系统自带了Apache和PHP环境。默认没有开启Apache，最新版的seirra取消了图形界面，只能手动开启Apache。
+
 - PHP version: 7.1.16
 - Apache version: 2.4.33
 - OS verison: macOS High Sierra 10.13
@@ -36,7 +39,7 @@ httpd -V    # for get more info
 1. 打开终端，输入命令：`sudo vim /etc/apache2/httpd.conf`
 2. 找到`#LoadModule php7_module libexec/apache2/libphp7.so`行，去掉前面的`#`。
 
-macOS下Apache的默认文件夹为/Library/WebServer/Documents，在该目录下创建一个名为index.php文件，在文件中添加如下内容：`<?php phpinfo(); ?>`。删除原目录下的index.html文件，然后在浏览器中输入localhost，如果出现PHP的info页，则表示PHP开启成功，如果不成功，用前面的命令重启Apache再试。
+macOS下Apache的默认文件夹为`/Library/WebServer/Documents`，在该目录下创建一个名为index.php文件，在文件中添加如下内容：`<?php phpinfo(); ?>`。删除原目录下的index.html文件，然后在浏览器中输入localhost，如果出现PHP的info页，则表示PHP开启成功，如果不成功，用前面的命令重启Apache再试。
 
 ## 安装Mysql
 到MySQL官网下载最新的dmg安装包，这里下载的是mysql-8.0.12-macos10.13-x86_64.dmg。进入下载页面后，会提示你登陆或注册，这里不必理会，直接点击底部的“No thanks, just start my download.”即可开始下载。
@@ -71,6 +74,7 @@ $cfg['Servers'][$i]['host'] = '127.0.0.1';
 ### 问题2:
 
 参考<https://stackoverflow.com/questions/49948350/phpmyadmin-on-mysql-8-0>
+
 >#2054 - The server requested authentication method unknown to the client
 mysqli_real_connect(): The server requested authentication method unknown to the client [caching_sha2_password]
 mysqli_real_connect(): (HY000/2054): The server requested authentication method unknown to the client
