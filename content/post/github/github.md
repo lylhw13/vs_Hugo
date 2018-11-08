@@ -55,3 +55,10 @@ git push -f origin master
 ```sh
 touch .gitignore
 ```
+
+## git checkout 到指定版本
+
+```sh
+git log         # show commit logs
+git checkout branch-id          # check out to the target branch
+```
