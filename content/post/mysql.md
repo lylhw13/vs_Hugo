@@ -36,3 +36,15 @@ Alternatively, you can change the my.ini configuration as the following:
 default_authentication_plugin=mysql_native_password
 
 Restart the MySQL Server and open the Workbench again.
+
+# Error: Can't connect to MySQL server on '127.0.0.1' (10061) (2003)
+
+Try to connect mysql, it show the error like this![mysql cann't connect error](/media/pic/mysql_cannot_connet.png)
+
+Solve:
+
+>If you have already installed MySQL on a windows machine make sure it is running as a service.. You can do that by
+
+>Start --> services --> MySQL(ver) --> Right-Click --> Start
+
+参考<https://stackoverflow.com/questions/24525736/cant-connect-to-mysql-server-on-127-0-0-1-10061-2003/40278163#40278163>

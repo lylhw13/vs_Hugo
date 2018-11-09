@@ -21,7 +21,7 @@ macOS系统自带了Apache和PHP环境。默认没有开启Apache，最新版的
 ## 开启Apache
 Apache相关命令如下：
 ```sh
-sudo apachectl start    # strart apache
+sudo apachectl start    # start apache
 sudo apachectl stop     # sotp apache
 sudo apachectl restart  # restart apache 
 ```
