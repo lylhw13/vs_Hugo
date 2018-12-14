@@ -36,3 +36,8 @@ shasum -a 1 filename
 # calculate SHA-256 checksum
 shasum -a 256 filename
 ```
+
+# connect to linux server
+```sh
+ssh -p port user-name@the-server-ip
+```

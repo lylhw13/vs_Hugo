@@ -62,3 +62,7 @@ SyntaxError: Invalid or unexpected token
 ```
 
 yum list intalled |grep mysql
+# move files and folders to another directory
+```sh
+mv /path/sourcefolder/* /path/destinationfolder/
+```

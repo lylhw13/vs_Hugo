@@ -42,6 +42,24 @@ error: failed to push some refs to "xxxxxxx"
 git push -f origin master
 ```
 
+## Error 3
+>error: Your local changes to the following files would be overwritten by merge:   
+Please commit your changes or stash them before you merge.
+
+### 解决办法
+1. 服务器代码与本地代码合并
+    ```sh
+    git stash   #saves your local modifications away and reverts the working directory to match the HEAD commit.
+    git pull    
+    git stash pop 
+    ```
+2. 服务器代码覆盖本地代码：
+    ```sh
+    git reset --hard #Resets the index and working tree. Any changes to tracked files in the working tree since <commit> are discarded.
+    git pull
+    ```
+
+
 # git commands
 
 ## Windows下无法手动创建 `.gitignore`文件
