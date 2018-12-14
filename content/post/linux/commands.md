@@ -12,3 +12,8 @@ passwd                      #change your user passwd
 sudo passwd USERNAME        #change other users passwd
 ```
 reter to [Change password on root user and user account](https://askubuntu.com/questions/423942/change-password-on-root-user-and-user-account)
+
+# move files and folders to another directory
+```sh
+mv /path/sourcefolder/* /path/destinationfolder/
+```
