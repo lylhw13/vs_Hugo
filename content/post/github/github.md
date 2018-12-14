@@ -60,5 +60,5 @@ touch .gitignore
 
 ```sh
 git log         # show commit logs
-git checkout branch-id          # check out to the target branch
+git checkout target-branch-id          # check out to the target branch
 ```
