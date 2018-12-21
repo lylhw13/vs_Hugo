@@ -22,3 +22,13 @@ pip install virtualenvwrapper-win   #要安装Windows版本，否则一些命令
 pip install scrapy
 
 ```
+
+```sh
+scrapy shell "https://book.douban.com/subject/25900156/" -s USER_AGENT="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"
+```
+
+
+## Things to keep in mind while rotating user agents
+1. Use User Agents strings  of recent versions of popular browsers and keep them updated
+2. Rotating User-Agents without rotating IP addresses is a bad idea
+3. Rotating User-Agents doesn’t guarantee that websites won’t block you

@@ -48,3 +48,10 @@ Solve:
 >Start --> services --> MySQL(ver) --> Right-Click --> Start
 
 参考<https://stackoverflow.com/questions/24525736/cant-connect-to-mysql-server-on-127-0-0-1-10061-2003/40278163#40278163>
+
+# check the mysql verison number
+```mysql
+select version();
+```
+
+https://book.douban.com/subject/1085860/
