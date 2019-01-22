@@ -41,3 +41,20 @@ shasum -a 256 filename
 ```sh
 ssh -p port user-name@the-server-ip
 ```
+
+# 查看环境参数
+```sh
+printenv            #查看环境参数
+echo $SHELL         
+echo $PATH
+rm -rf          #force to delete a non-empty folder
+```
+
+# [Two Ways to Reveal the Location of a Spotlight Search Result in OS X](https://www.tekrevue.com/tip/show-spotlight-results-in-finder/)
+
+- preview spotlight location with command key
+
+    `tap and hold the command key`
+- reveal the spotlight result's location in finder
+  
+    `command + return or (command + double-click)`

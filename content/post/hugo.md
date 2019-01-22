@@ -10,7 +10,7 @@ categories: ["Hugo"]
 
 ## 安装Hugo
 
-这里是在Windows安装Hugo，其他安装可以参考官方文档。
+### windows 安装
 
 * 下载hugod的发布版,地址为 <https://github.com/gohugoio/hugo/releases> , 下载完成后解压到任意文件夹
 
@@ -18,6 +18,10 @@ categories: ["Hugo"]
 
 * 如果安装正确，通过 hugo version 可以得到hugo的版本信息
 
+### Mac 安装
+参考<https://gohugo.io/getting-started/installing/>
+
+采用install Hugo from Tarball，安装位置为 ～/bin/Hugo
 ## 搭建博客
 
 * 创建你的博客
