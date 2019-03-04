@@ -27,3 +27,5 @@ If application.qml does not have any graphical components, or if it is preferred
 
 ## [Overview - QML and C++ Integration](https://doc.qt.io/qt-5/qtqml-cppintegration-overview.html#defining-qml-types-from-c)
 
+## [Model/View Programming](https://doc.qt.io/qt-5/model-view-programming.html)
+

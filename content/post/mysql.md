@@ -55,3 +55,15 @@ select version();
 ```
 
 https://book.douban.com/subject/1085860/
+
+# Mysql commands
+
+```mysql
+show databases;         # 列出所有的数据库
+use DATABASE_NAME;      # 选择一个数据库
+show tables;            # 列出所有的表
+
+create database NAME;   # 创建一个数据库
+drop database NAME;     # 删除一个数据库
+```
+http://blog.51yip.com/mysql/1005.html
