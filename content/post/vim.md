@@ -64,7 +64,7 @@ ctrl + g 会返回如下信息：
 
 强制刷新内容：`:e!`或者`:edit!`
 
-## 删除引号中的内容，其他配对括号同理如'', (), {}, <>
+## 删除双引号中的内容，其他配对括号同理如'', (), {}, <>
 
 ```vim
 ci"     #删除引号中的内容，并进入编辑模式
@@ -99,3 +99,9 @@ vi"     #选中引号中的内容
 :%s/origin_str/target_str/g    #全局替换命令
 ```
 
+## replace word under cursor
+
+```sh
+ciw         # (change inner word) change the whole word under the cursor.
+cw          # only change the word from the current cursor position. 
+```

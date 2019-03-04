@@ -59,6 +59,23 @@ Please commit your changes or stash them before you merge.
     git pull
     ```
 
+## Error 4
+
+-  描述
+    ```sh
+    > ssh-add
+    Error connecting to agent: No such file or directory
+    ```
+- solution
+    1. run `powershell` as Administrator
+    1. Check the current status of ssh-agent: "Get-Service | select -property name,starttype"
+    2. Set the new type : "Set-Service -Name ssh-agent -StartupType Manual"
+    3. Start it: "Start-Service ssh-agent"
+    4. Add simply your key as before: "ssh-add"
+
+    refer to <https://github.com/PowerShell/Win32-OpenSSH/issues/1133#issuecomment-401064568>
+
+
 
 # git commands
 
@@ -80,3 +97,15 @@ touch .gitignore
 git log         # show commit logs
 git checkout target-branch-id          # check out to the target branch
 ```
+
+# Problems
+
+## Asking for entering passphrase for C:\User\TEM/.ssh/id_rsa every time.
+
+```sh
+ssh-add
+```
+
+refer to 
+- <https://github.com/cmderdev/cmder/issues/1781>
+- <https://stackoverflow.com/questions/21095054/ssh-key-still-asking-for-password-and-passphrase>
