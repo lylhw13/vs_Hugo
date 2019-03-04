@@ -1,5 +1,5 @@
 ---
-title: "Qtcreater"
+title: "Qt error"
 date: 2019-01-22T16:26:20+08:00
 draft: true
 ---
@@ -10,3 +10,5 @@ solve by refering to this page: [QtCharts plugins.qmltype file provides a wrong 
 >For 5.12.0, replace the plugins.qmltypes file in QTDIR/qml/QtCharts with attached file.
 
 In my case, I use Destop Qt 5.12.0 MSVC2017 64bit, so I replace plugins.qmltypes in D:\Qt\Qt5.12.0\5.12.0\msvc2017_64\qml\QtCharts with attached file.
+
+On mac, I use Desktop Qt 5.12.0 clang 64bit, so I replace plugins.qmltypes in ~/Qt/Qt5.12.0/5.12.0/clang_64/qml/QtCharts with attached file.

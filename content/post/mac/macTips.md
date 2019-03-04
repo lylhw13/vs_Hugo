@@ -40,6 +40,7 @@ shasum -a 256 filename
 # connect to linux server
 ```sh
 ssh -p port user-name@the-server-ip
+ssh -p 22 root@140.82.17.1
 ```
 
 # 查看环境参数

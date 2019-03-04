@@ -1,5 +1,5 @@
 ---
-title: "Commands"
+title: "Ubuntu Commands"
 date: 2018-10-27T19:05:28+08:00
 draft: true
 ---
@@ -12,6 +12,14 @@ passwd                      #change your user passwd
 sudo passwd USERNAME        #change other users passwd
 ```
 reter to [Change password on root user and user account](https://askubuntu.com/questions/423942/change-password-on-root-user-and-user-account)
+
+# show disk space on ubuntu
+
+1. Open System Monitor from Dash and select the Filesystems tab.
+2. Or alternatively open a Terminal and type:
+   ```sh
+   df -h
+   ```
 
 
 
@@ -66,3 +74,5 @@ yum list intalled |grep mysql
 ```sh
 mv /path/sourcefolder/* /path/destinationfolder/
 ```
+
+
