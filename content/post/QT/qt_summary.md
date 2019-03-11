@@ -18,3 +18,5 @@ QVector doesn't have range-construction.
     #include <QtGui/QGuiApplication>
     ```
 `QCoreApplication` is the base class, `QGuiApplication` extends the base class with functionality related to handling windows and GUI stuff (non-widget related, e.g. OpenGL or QtQuick), `QApplication` extends QGuiApplication with functionality related to handling widgets.
+
+Each QML component is instantiated in a QQmlContext. QQmlContext's are essential for passing data to QML components. In QML, contexts are arranged hierarchically and this hierarchy is managed by the QQmlEngine.

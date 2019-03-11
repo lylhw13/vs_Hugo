@@ -112,3 +112,31 @@ void addAllVector(std::vector<A> &dest, const std::vector<A> &src) {
     }
 }  
 ```
+
+## Stack and Heap
+
+### refer to <https://forum.qt.io/topic/9130/is-there-a-general-rule-when-to-favor-a-heap-object-over-a-stack-object-if-the-stack-object-is-passed-by-value-a-lot>
+
+    For the stack/heap decision - that's mostly (not always!) a matter of the live time of objects: `stack for short term objects, heap for long living objects`. As for every rule of thumb: there are exceptions!
+
+    One important thing to remember, is that you can think of the heap as random memory. That is, you can create things, and destroy them, and generally let the objects have independent lives without it affecting things. Items can be contiguous or far apart. In no particular order. Think of the heap as your "general purpose" memory.
+
+    The stack, by definition, is a sequential block of memory. First in, last out. So, you're limited in the lifespan of objects. It serves a different purpose than the heap. It's there for items that are more limited in scope and lifespan, such as passing parameters, or having short-term elements in a method.
+
+    Also, if you create an object on the stack, it is immediately scoped to the block in which it was created. As soon as you leave that block, the item is popped off the stack and disappears. If you try to work around this, then you will end up with a ton of objects down in your main() or in some class. That becomes very kludgy and inefficient. With heap-based memory, you can pass pointers around and the data lives independently of where it was allocated, until such time as you tell it to go away.
+
+    Additionally, the QObject class hierarchy relies on heap-based objects, as objects need to be allocated on the heap for QObject's memory management routines to work.
+
+    If the widget which doesn't have a parent, you had better allocate it on the stack.
+
+### [What’s the difference between a stack and a heap?](https://www.programmerinterview.com/index.php/data-structures/difference-between-stack-and-heap/)
+
+    In a multi-threaded application, each thread will have its own stack. But, all the different threads will share the heap. 
+
+### [How do I choose heap allocation vs. stack allocation in C++?](https://stackoverflow.com/questions/7973138/how-do-i-choose-heap-allocation-vs-stack-allocation-in-c)
+
+## override
+refer to <https://stackoverflow.com/questions/18198314/what-is-the-override-keyword-in-c-used-for>,
+<https://stackoverflow.com/questions/13880205/is-the-override-keyword-just-a-check-for-a-overridden-virtual-method>
+
+- the introduction of override keyword in C++11 is nothing more than a check to make sure that the function being implemented is the overrideing of a virtual function in the base class.
