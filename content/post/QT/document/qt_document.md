@@ -6,24 +6,63 @@ draft: true
 
 # [The QML Reference](http://doc.qt.io/qt-5/qmlreference.html)
 
-# [QML Object Attributes](http://doc.qt.io/qt-5/qtqml-syntax-objectattributes.html)
+## [QML Object Attributes](http://doc.qt.io/qt-5/qtqml-syntax-objectattributes.html)
 
-This id must begin with a lower-case letter or an underscore, and cannot contain characters other than letters, numbers and underscores.
+- This id must begin with a lower-case letter or an underscore, and cannot contain characters other than letters, numbers and underscores.
 
-Property names must begin with a lower case letter and can only contain letters, numbers and underscores.
+### Property Attributes
+- property's value can be read and modified by other objects. 
+- Property names must begin with a lower case letter and can only contain letters, numbers and underscores.
 
-Properties are type safe. A property can only be assigned a value that matches the property type.
+- Properties are type safe. A property can only be assigned a value that matches the property type.
 
+#### Property Aliases
 
+- Signal Attributes
+  - An object can be notified through a signal handler whenever a particular signal is emitted. A signal handler is declared with the syntax on<Signal> where <Signal> is the name of the signal, with the first letter capitalized. The signal handler must be declared within the definition of the object that emits the signal, and the handler should contain the block of JavaScript code to be executed when the signal handler is invoked.
 
-### [First Steps with QML](https://doc.qt.io/qt-5/qmlfirststeps.html#)
+#### Default Properties
+- An object definition can have a single default property. A default property is the property to which a value is assigned if an object is declared within another object's definition without declaring it as a value for a particular property.
+- A read-only property cannot also be a default property.
+
+## [Property Binding](https://doc.qt.io/qt-5/qtqml-syntax-propertybinding.html)
+- A binding can contain any valid JavaScript expression or statement, as QML uses a standards compliant JavaScript engine. Bindings can access object properties, call methods and use built-in JavaScript objects such as Date and Math. 
+- A property with a binding is automatically updated as necessary. However, if the property is later assigned a static value from a JavaScript statement, the binding will be removed.
+### Debugging overwriting of bindings
+- To help developers track down problems of this kind, the QML engine is able to emit messages whenever a binding is lost due to imperative assignments.
+
+## [JavaScript Host Environment](https://doc.qt.io/qt-5/qtqml-javascript-hostenvironment.html)
+- the QML runtime implements the ECMAScript Language Specification standard. This provides access to all of the built-in types and functions defined by the standard, which is the same edition commonly implemented by browsers.
+### JavaScript Objects and Functions
+### JavaScript Environment Restrictions
+- JavaScript's automatic creation of undeclared variables is an implicit modification of the global object, and is prohibited in QML.
+#### Global code is run in a reduced scope.
+- This restriction exists as the QML environment is not yet fully established. To run code after the environment setup has completed, see JavaScript in Application Startup Code.
+#### The value of this is undefined in QML in the majority of contexts.
+
+## [JavaScript Expressions in QML Documents](https://doc.qt.io/qt-5/qtqml-javascript-expressions.html)
+### JavaScript in application startup code
+- the best place to write application startup code is in the Component.onCompleted handler of the top-level object, because this object emits Component.completed when the QML environment is fully established.
+- Any object in a QML file - including nested objects and nested QML component instances - can use this attached property. If there is more than one onCompleted() handler to execute at startup, they are run sequentially in `an undefined order`.
+- Likewise, every Component emits a destruction() signal just before being destroyed.
+
+## [Signal and Handler Event System](https://doc.qt.io/qt-5/qtqml-syntax-signals.html)
+- A signal is automatically emitted when the value of a QML property changes. This type of signal is a property change signal and signal handlers for these signals are written in the form on<Property>Changed, where <Property> is the name of the property, with the first letter capitalized.
+- Even though the TapHandler documentation does not document a signal handler named onPressedChanged, the signal is implicitly provided by the fact that the pressed property exists.
+- In some cases it may be desirable to access a signal outside of the object that emits it. For these purposes, the QtQuick module provides the Connections type for connecting to signals of arbitrary objects. A Connections object can receive any signal from its specified target.
+- An attached signal handler receives a signal from an attaching type rather than the object within which the handler is declared.
+### Adding signals to custom QML types
+- A signal is emitted by invoking the signal as a method.
+- However, using the connect method allows a signal to be received by multiple methods as shown earlier, which would not be possible with signal handlers as they must be uniquely named. Also, the connect method is useful when connecting signals to dynamically created objects.
+
+## [First Steps with QML](https://doc.qt.io/qt-5/qmlfirststeps.html#)
 
 One of the great advantages of using QML to define a user interface is that it allows the user interface designer to define how the application should react to events with simple JavaScript expressions. In QML, we refer to those events as signals and these signals are handled by signal handlers.
 
-### [Deploying QML Applications](https://doc.qt.io/qt-5/qtquick-deployment.html)
+## [Deploying QML Applications](https://doc.qt.io/qt-5/qtquick-deployment.html)
 If application.qml does not have any graphical components, or if it is preferred to avoid QQuickView for other reasons, the QQmlEngine can be constructed directly instead.
 
-### [QML Coding Conventions](https://doc.qt.io/qt-5/qml-codingconventions.html)
+## [QML Coding Conventions](https://doc.qt.io/qt-5/qml-codingconventions.html)
 
 ## [Overview - QML and C++ Integration](https://doc.qt.io/qt-5/qtqml-cppintegration-overview.html#defining-qml-types-from-c)
 
@@ -141,10 +180,7 @@ Therefore, we strongly recommend that all subclasses of QObject use the Q_OBJECT
 ## [Qt Namespace](https://doc.qt.io/qt-5/qt.html)
 - The Qt namespace contains miscellaneous identifiers used throughout the Qt library. 
 
-## [QQmlApplicationEngine Class](https://doc.qt.io/qt-5/qqmlapplicationengine.html)
-- QQmlApplicationEngine provides a convenient way to load an application from a single QML file.
 
-- Unlike QQuickView, QQmlApplicationEngine does not automatically create a root window. If you are using visual items from Qt Quick, you will need to place them inside of a Window.
 
 ## [QAbstractTableModel Class](https://doc.qt.io/qt-5/qabstracttablemodel.html)
 - When subclassing QAbstractTableModel, you must implement rowCount(), columnCount(), and data(). Default implementations of the index() and parent() functions are provided by QAbstractTableModel. Well behaved models will also implement headerData().
@@ -158,3 +194,5 @@ Therefore, we strongly recommend that all subclasses of QObject use the Q_OBJECT
 - Components are reusable, encapsulated QML types with well-defined interfaces.
 - The component encapsulates the QML types within, as if they were defined in a separate QML file, and is not loaded until requested.
 - A QML document has a single top-level item that defines the behavior and properties of that component, and cannot define properties or behavior outside of that top-level item. 
+
+## [Qt Quick Controls Configuration File](https://doc.qt.io/qt-5/qtquickcontrols2-configuration.html)

@@ -29,4 +29,5 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/p
 ```
 
 # command not found
-modify the ~/.zshrc, then add the new path.
+- modify the ~/.zshrc, then add the new path.
+- source ~/.zshrc

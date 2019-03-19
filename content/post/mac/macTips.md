@@ -28,6 +28,8 @@ commands | function
 Reference: [Top 10 Mac keyboard shortcuts everyone should know](https://www.cultofmac.com/317935/top-10-mac-keyboard-shortcuts/)
 
 # Terminal
+
+## checksum
 ```sh
 # calculate md5 checksum
 md5 /tmp/filename
@@ -36,8 +38,14 @@ shasum -a 1 filename
 # calculate SHA-256 checksum
 shasum -a 256 filename
 ```
+## Copy the Current Path from Terminal to the Clipboard in Mac OS X
+```sh
+pwd                 # print current directory
+pwd | pbcopy          # copy path to clipboard
+pbpaste             # paste the clipboard
+```
 
-# connect to linux server
+## connect to linux server
 ```sh
 ssh -p port user-name@the-server-ip
 ssh -p 22 root@140.82.17.1
