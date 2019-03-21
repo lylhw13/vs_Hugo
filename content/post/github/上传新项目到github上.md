@@ -6,18 +6,38 @@ tags: ["Github"]
 categories: ["Github"]
 ---
 
-在本地文件夹下面的操作：
 
-```sh
-cd you_work_directory
+# 在github网页端，新建仓库，没有进行初始化
+```git
+# local directory
 git init
-git add README.md
-git commit -m "first commit"
+git add .
+git commit -m "First commit"
+
+# set teh new romote
+git remote add origin [remote repository url]
+
+# verifies the new remote url
+git remote -v
+
+# push the chagnes
+git push origin master
 ```
 
-在github网页端，新建一个仓库，但是不要初始化。接着执行
+# 在github网页端，新建仓库且已经初始化
+```git
+git init
+git pull [remote repostitory url]
+git add .
+git commit -m "First commit"
 
-```sh
-git remote add origin git@github.com:lylhw13/new_repository.git
-git push -u origin master
+
+# set teh new romote
+git remote add origin [remote repository url]
+
+# verifies the new remote url
+git remote -v
+
+# push the chagnes
+git push origin master
 ```

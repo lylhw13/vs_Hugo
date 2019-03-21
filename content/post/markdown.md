@@ -14,3 +14,8 @@ Markdown 中可以简便地只在每一个需要强制换行的段落的首行�
 ## 引用图片
 
 ![multi_display_left2_right1](/media/pic/windows/multi_displays_2_1.png)
+
+## 加粗，倾斜
+
+- **bold**
+- *italic*
