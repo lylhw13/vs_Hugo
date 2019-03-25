@@ -21,3 +21,5 @@ On mac, I use Desktop Qt 5.12.0 clang 64bit, so I replace plugins.qmltypes in ~/
 - Explanation <https://doc.qt.io/qt-5/qml-qtqml-qt.html#quit-method>
     >This function causes the QQmlEngine::quit() signal to be emitted. Within the Prototyping with qmlscene, this causes the launcher application to exit; to quit a C++ application when this method is called, connect the QQmlEngine::quit() signal to the QCoreApplication::quit() slot.
 
+# [C++/QML: ListView is not updated on dataChanged signal from QAbstractListModel](https://stackoverflow.com/questions/38630750/c-qml-listview-is-not-updated-on-datachanged-signal-from-qabstractlistmodel)
+You mustn't declare the dataChanged() signal in your class, because you want to emit the signal AbstractItemModel::dataChanged(). If you re-declare it you add a comleptely new and different Signal that is not connected anywhere. If you remove the declaration in acdata.h everything should work fine.
