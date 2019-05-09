@@ -67,3 +67,22 @@ rm -rf          #force to delete a non-empty folder
 - reveal the spotlight result's location in finder
   
     `command + return or (command + double-click)`
+
+
+## zip
+refer to <https://apple.stackexchange.com/questions/12371/how-can-i-compress-a-folder-into-multiple-zip-files>
+
+Use the -s switch on the zip command in terminal. So if your folder was called FolderName
+
+`zip -r -s 64 archive.zip FolderName/`
+
+64 is the size of the split (in this case 64Mb).
+
+if want to encrypt, use -e
+
+`zip -r -s 64 archive.zip FolderName/ -e`
+
+>Use -s to set the split size and create a split archive.  
+The size is  given  as  a  number  followed optionally  by  one  
+of  k (kB), m (MB), g (GB), or t (TB) (the default is m). [1]
+Use zipsplit to split a zip file in to multiple smaller zipfiles. Use the -n switch to set the size of the splits.

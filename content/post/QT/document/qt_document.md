@@ -196,3 +196,6 @@ Therefore, we strongly recommend that all subclasses of QObject use the Q_OBJECT
 - A QML document has a single top-level item that defines the behavior and properties of that component, and cannot define properties or behavior outside of that top-level item. 
 
 ## [Qt Quick Controls Configuration File](https://doc.qt.io/qt-5/qtquickcontrols2-configuration.html)
+
+## [Window QML Type](https://doc.qt.io/qt-5/qml-qtquick-window-window.html)
+A Window can be declared inside an Item or inside another Window; in that case the inner Window will automatically become "transient for" the outer Window: that is, most platforms will show it centered upon the outer window by default, and there may be other platform-dependent behaviors, depending also on the flags. If the nested window is intended to be a dialog in your application, you should also set flags to Qt.Dialog, because some window managers will not provide the centering behavior without that flag. You can also declare multiple windows inside a top-level QtObject, in which case the windows will have no transient relationship.

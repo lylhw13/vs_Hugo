@@ -68,9 +68,48 @@ Each QML component is instantiated in a QQmlContext. QQmlContext's are essential
 - [Positioning with Anchors](https://doc.qt.io/qt-5/qtquick-positioning-anchors.html)
 - Qt Quick Layouts Overview
 
+
+
 ## commands
 
 refer to [Prototyping with qmlscene](https://doc.qt.io/qt-5.9/qtquick-qmlscene.html)
 ```sh
 qmlscene myqmlfile.qml
 ```
+
+
+## fragmeny
+```js
+function createInput(num,x,y) {
+    var component = Qt.createComponent("Test.qml")
+    if(component.status === Component.Ready)
+        component.createObject(addInput, {"x": x, "y": y})
+    console.log("add a input " + y)
+}
+```
+
+When referring to files stored with the Qt Resource System from within QML, you should use "qrc:///" instead of ":/" as QML requires URL paths. <https://doc.qt.io/qt-5/qml-url.html>
+
+Since Qt Quick Layouts also resize their items, they are well suited for resizable user interfaces.<https://doc.qt.io/qt-5/qtquicklayouts-overview.html>
+
+
+## model
+If a C++ model class is used, it must be a subclass of QAbstractItemModel or a simple list.
+
+<https://forum.qt.io/topic/68585/qabstractlistmodel-as-property>
+QAbstractItemModel is a QObject subclass and thus by definition a non-copyable class.
+You should return a pointer to a NoteList in your property.
+
+## Registering Non-Instantiable Types
+Sometimes a QObject-derived class may need to be registered with the QML type system but not as an instantiable type. For example, this is the case if a C++ class:
+
+is an interface type that should not be instantiable
+is a base class type that does not need to be exposed to QML
+declares some enum that should be accessible from QML, but otherwise should not be instantiable
+is a type that should be provided to QML through a singleton instance, and should not be instantiable from QML
+The Qt QML module provides several methods for registering non-instantiable types:
+
+qmlRegisterType() (with no parameters) registers a C++ type that is not instantiable and cannot be referred to from QML. This enables the engine to coerce any inherited types that are instantiable from QML.
+qmlRegisterInterface() registers an existing Qt interface type. The type is not instantiable from QML, and you cannot declare QML properties with it. Using C++ properties of this type from QML will do the expected interface casts, though.
+qmlRegisterUncreatableType() registers a named C++ type that is not instantiable but should be identifiable as a type to the QML type system. This is useful if a type's enums or attached properties should be accessible from QML but the type itself should not be instantiable.
+qmlRegisterSingletonType() registers a singleton type that can be imported from QML, as discussed below.
