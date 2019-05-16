@@ -1,13 +1,8 @@
 ---
-title: "GitHub 问题汇总"
-date: 2018-07-01T11:57:30+08:00
-draft: false
-tags: ["GitHub"]
-categories: ["Summary"]
+title: "Git_errors"
+date: 2019-05-11T10:38:02+08:00
+draft: true
 ---
-
-# GitHub 问题汇总
-
 ## Error 1
 
 使用git push时出现error: src refspec master does not match any.
@@ -75,37 +70,36 @@ Please commit your changes or stash them before you merge.
 
     refer to <https://github.com/PowerShell/Win32-OpenSSH/issues/1133#issuecomment-401064568>
 
+## Error 5
+- 描述
+    >   error: RPC failed; curl 18 transfer closed with outstanding read data remaining
+    >
+    >   fatal: The remote end hung up unexpectedly
+    > 
+    >   fatal: early EOF
+    > 
+    >   fatal: index-pack failed
 
+- Solution
+  1.  moidfy buffer:  <br />
+        `git config --global http.postBuffer 524288000`  <br />
+        unit is byte
+  2.  modify clone depth:  <br />
+        ```git
+        git clone http://github.com/large-repository --depth 1
+        cd large-repository
+        git fetch --unshallow
+        ```
+  3.  change http to ssh:  <br />
+        一般clone http方式的容易产生此问题，改成SSH的方式也有效，即https://改为git://
 
-# git commands
+About postBuffer:
+* 查询当前http.postBuffer `git config --global --get http.postBuffer`  <br />
+  the default value is 1MB
 
-## Windows下无法手动创建 `.gitignore`文件
+>   Maximum size in bytes of the buffer used by smart HTTP transports when POSTing data to the remote system.
+> 
+>   For requests larger than this buffer size, HTTP/1.1 and Transfer-Encoding: chunked is used to avoid creating a massive pack file locally. Default is 1 MiB, which is sufficient for most requests
 
-在Windows下面试图通过创建一个文本文件，然后更改名称为`.gitignore`的时候，系统会提醒说:`You must type a file name.`。造成无法创建类似名称的文件。
-
-### 解决办法
-
-采用命令行生成这样一个文件。
-
-```sh
-touch .gitignore
-```
-
-## git checkout 到指定版本
-
-```sh
-git log         # show commit logs
-git checkout target-branch-id          # check out to the target branch
-```
-
-# Problems
-
-## Asking for entering passphrase for C:\User\TEM/.ssh/id_rsa every time.
-
-```sh
-ssh-add
-```
-
-refer to 
-- <https://github.com/cmderdev/cmder/issues/1781>
-- <https://stackoverflow.com/questions/21095054/ssh-key-still-asking-for-password-and-passphrase>
+refer to <https://blog.csdn.net/IT_liuchengli/article/details/77040806><br>
+<https://stackoverflow.com/questions/38618885/error-rpc-failed-curl-transfer-closed-with-outstanding-read-data-remaining>

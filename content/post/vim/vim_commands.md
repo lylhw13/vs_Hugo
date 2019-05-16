@@ -20,6 +20,7 @@ vi"     #选中引号中的内容
 
 ```vim
 dG          #删除到文件结尾
+d$          #删除到行尾，而不是 dt$
 dtc         #删除到字符c，但是不包括c
 dfc         #删除到字符c，也包括c
 :1,10d      #删除从1到10行
@@ -110,6 +111,15 @@ ctrl + g 会返回如下信息：
 ciw         # (change inner word) change the whole word under the cursor.
 cw          # only change the word from the current cursor position. 
 ```
+## 复制全文
+```vim
+ggVGy           #复制
+ggVG"+y         #复制到系统剪切板
+```
+-   gg 让光标移到首行，在vim才有效，vi中无效 
+-   V   是进入Visual(可视）模式 
+-   G  光标移到最后一行 
+
 
 ## copy to clipboard
 refer to <https://stackoverflow.com/questions/3961859/how-to-copy-to-clipboard-in-vim>
