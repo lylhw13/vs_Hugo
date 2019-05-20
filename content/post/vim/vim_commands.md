@@ -6,6 +6,21 @@ tags: ["vim"]
 categories: ["vim"]
 ---
 
+# Cursor Movement Keys
+| Key | Moves The Cursor |
+| --- | --- |
+| 0(zero) | To the beginning of the current line. |
+| ^ | To the first non-whitespace character on the current line. |
+| $ | To the end of the current line. |
+| w | To the beginning of the next word or punctuation character. |
+| W | To the beginning of the next word, ignoring punctuation characters. |
+| b | To the beginning of the previous word or punctuation character. |
+| B | To the beginning of the previous word, ignoring punctuation characters. |
+| Ctrl-f or Page Down | Down one page. |
+| Ctrl-b or Page Up | Up one page. |
+| numberG | To line number. For example, 1G moves to the first line of the file. |
+| G | To the last line of the file. |
+
 # 删除
 
 ## 删除双引号中的内容，其他配对括号同理如'', (), {}, <>
@@ -85,7 +100,6 @@ ctrl + g 会返回如下信息：
 :[addr]s/origin_str/target_str/[option]
 ```
 `[addr]` 表示检索范围：
-
 - 省略时表示当前行。
 - `1,20` 表示从1到20行
 - `%` 表示整个文件，同"1,$"
@@ -94,7 +108,6 @@ ctrl + g 会返回如下信息：
 `s`:    表示替换操作
 
 `[option]`表示操作类型:
-
 - `g` 表示全局替换
 - `c` 表示进行确认
 - `p` 表示替代结果逐行显示（Ctrl + L恢复屏幕

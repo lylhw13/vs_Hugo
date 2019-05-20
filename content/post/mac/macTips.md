@@ -25,6 +25,15 @@ commands | function
 `command + h` | hide the current active app
 `command + option + h` | hide other apps but the current active app
 
+| commands | function |
+| --- | --- |
+| option + esc | read the word |
+
+| commands | function |
+| --- | --- |
+| shift + option + ? | ¿ |
+
+
 Reference: [Top 10 Mac keyboard shortcuts everyone should know](https://www.cultofmac.com/317935/top-10-mac-keyboard-shortcuts/)
 
 # Terminal
