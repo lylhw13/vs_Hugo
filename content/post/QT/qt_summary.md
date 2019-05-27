@@ -113,3 +113,13 @@ qmlRegisterType() (with no parameters) registers a C++ type that is not instanti
 qmlRegisterInterface() registers an existing Qt interface type. The type is not instantiable from QML, and you cannot declare QML properties with it. Using C++ properties of this type from QML will do the expected interface casts, though.
 qmlRegisterUncreatableType() registers a named C++ type that is not instantiable but should be identifiable as a type to the QML type system. This is useful if a type's enums or attached properties should be accessible from QML but the type itself should not be instantiable.
 qmlRegisterSingletonType() registers a singleton type that can be imported from QML, as discussed below.
+## Row vs RowLayout
+Row is [Item Positioners](https://doc.qt.io/qt-5/qtquick-positioning-layouts.html), RowLayout is [Qt Quick Layouts](https://doc.qt.io/qt-5/qtquicklayouts-index.html). 
+
+They behave in a similar way, but have two difference:
+
+- Item Positioners are also containers in their own right.
+- Qt Quick Layouts can resize their items.
+
+## [splitview](https://doc.qt.io/qt-5/qml-qtquick-controls-splitview.html)
+There will always be one (and only one) item in the SplitView that has Layout.fillWidth set to true

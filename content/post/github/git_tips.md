@@ -44,6 +44,14 @@ With Git 1.7.10 and later, add --single-branch to prevent fetching of all branch
 ```
 refer to <https://stackoverflow.com/questions/1911109/how-to-clone-a-specific-git-branch>
 
+## git clone including submodules
+
+With version 2.13 of Git and later use --recurse-submodules
+```git
+git clone --recurse-submodules https://github.com/spyder-ide/spyder.git -j8
+```
+Tips: -j8 is an optional performance optimization that became available in version 2.8, and fetches up to 8 submodules at a time in parallel — see man git-clone.
+
 # Problems
 
 ## Asking for entering passphrase for C:\User\TEM/.ssh/id_rsa every time.

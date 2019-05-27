@@ -157,3 +157,14 @@ Error message:
 Answer:
 
 `The format string is not really a normal Python format string. You must always use %s for all fields.`
+
+
+## xpath
+
+/bookstore/book[last()]         # 选取属于 bookstore 子元素的最后一个 book 元素
+
+//input[starts-with(@name,'name1')]    # 查找name属性中开始位置包含'name1'关键字的页面元素
+
+//input[contains(@name,'na')]        # 查找name属性中包含na关键字的页面元素
+
+

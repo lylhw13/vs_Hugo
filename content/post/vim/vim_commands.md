@@ -157,3 +157,15 @@ Vim 中的复制、删除的内容都会被存放到默认（未命名）寄存�
 - "（单个双引号）：未命名的寄存器，是 Vim 的默认寄存器，例如删除、复制等操作的内容都会被保存到这里。
 - +：剪切板寄存器，关联系统剪切板，保存在这个寄存器中的内容可以被系统其他程序访问，也可以通过这个寄存器访问其他程序保存到剪切板中的内容。
 
+## join two lines
+J joins the two lines and moves you at the start of the text you wanted to delete. This deletes a new-line character and the indentation of the line you want to move.
+D deletes from the current cursor position to the end of the line but preserves the new-line character.
+
+## swap two lines
+To swap the current line with the next one, type ddp while in command mode.
+
+dd - delete line (actually called cut in other editors) and save it in register
+p - paste line from buffer
+
+## 列编辑
+[Vim 的纵向编辑模式](https://www.ibm.com/developerworks/cn/linux/l-cn-vimcolumn/index.html)

@@ -103,3 +103,15 @@ About postBuffer:
 
 refer to <https://blog.csdn.net/IT_liuchengli/article/details/77040806><br>
 <https://stackoverflow.com/questions/38618885/error-rpc-failed-curl-transfer-closed-with-outstanding-read-data-remaining>
+
+
+## Error 6
+### 描述
+>error: Pulling is not possible because you have unmerged files.  <br />
+>`hint: Fix them up in the work tree, and then use 'git add/rm <file>'`  <br />
+>`hint: as appropriate to mark resolution and make a commit.`  <br />
+>fatal: Exiting because of an unresolved conflict.
+
+### solution
+先执行:   `git add .`
+然后按照一般步骤执行。
