@@ -4,24 +4,34 @@ date: 2018-09-06T15:51:29+08:00
 draft: true
 ---
 
-#install python 
+# Windows install virtualenv, virtualenvwrapper 
 
-下载exe安装后，便会有pip命令
+1.  下载安装python后，便会有pip命令, pip是Windows程序，不是Python里面的函数。
 
+    ```sh
+    pip install virtualenv
+    pip install virtualenvwrapper-win   #要安装Windows版本，否则一些命令无法识别
+    ```
+2. 指定新创建的环境的位置。
+
+    添加环境变量：`WORKON_HOME:    D:\Python\Envs`
+
+3.  Commands for virtualenvwrapper
 ```sh
-pip install virtualenv
-
-pip install virtualenvwrapper-win   #要安装Windows版本，否则一些命令无法识别
+mkvirtualenv [-a project_path] [-i package] [-r requirements_file] [virtualenv options] ENVNAME         # make a new environment
+mktmpenv [(-c|--cd)|(-n|--no-cd)] [VIRTUALENV_OPTIONS]      # Create a new virtualenv in the WORKON_HOME directory.
+lsvirtualenv [-b] [-l] [-h]         # list all of the environments
+showvirtualenv [env]                # Show the details for a single virtualenv.
+rmvirtualenv ENVNAME                # Remove an environment, in the WORKON_HOME.
+cpvirtualenv ENVNAME [TARGETENVNAME]            # Duplicate an existing virtualenv environment. 
+workon [(-c|--cd)|(-n|--no-cd)] [environment_name|"."]          # List or change working virtual environments
+deactivate          # Switch from a virtual environment to the system-installed version of Python.
 ```
 
-新建环境变量：
-`WORKON_HOME:    D:\Python\Envs`
-可以指定新创建的环境的位置。
+## use virtualenv with vscode in windows
 
-```sh
-pip install scrapy
-
-```
+open setting.json, add the path of the envs folder as following. and restart.
+` "python.venvPath": "D:\\Python\\Envs" `
 
 # Mac 安装python3 和 virtualenv，virtualenvwrapper
 

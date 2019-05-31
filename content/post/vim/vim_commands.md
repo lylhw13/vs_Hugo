@@ -146,7 +146,7 @@ In Windows, + and * are equivalent. In unix there is a subtle difference between
 
 In Linux distros, for some reason, you have to install vim-gtk first to gain clipboard functionality.
 
-And for those confused about how to use registers when yanking or putting, you merely write " then the name of the register. So for copying something to the clipboard register you type "*y and then to put you type "*p
+And for those confused about how to use registers when yanking or putting, you merely write " then the name of the register. So for copying something to the clipboard register you type ` "*y ` and then to put you type ` "*p `
 
 
 参考https://www.zhihu.com/question/19863631/answer/89354508

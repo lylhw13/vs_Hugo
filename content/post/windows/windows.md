@@ -12,6 +12,11 @@ categories: ["Windows"]
 
 `C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp`
 
+## 添加软件链接到 Search Box
+
+将软件的lnk文件拷贝到下面路径即可。
+`C:\ProgramData\Microsoft\Windows\Start Menu\Programs`
+
 ## Windows双屏下鼠标移动的问题
 
 当双屏设置如图所示时，鼠标只能从`screen1`的`右边`移到`screen2`上:
