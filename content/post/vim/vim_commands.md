@@ -169,3 +169,19 @@ p - paste line from buffer
 
 ## 列编辑
 [Vim 的纵向编辑模式](https://www.ibm.com/developerworks/cn/linux/l-cn-vimcolumn/index.html)
+
+
+
+```vim
+:e ~/.vim/ftplugin/sh.vim
+
+:reg            # To see the current contents of the registers
+```
+
+it's a common custom to use the long names in configuration files for clarity.
+
+Shift-i (command to insert at the beginning of the line)
+
+One nice thing about macros is that vim remembers them. Each time we exit vim, the current macro definitions are stored and ready for reuse the next time we start another editing session.
+
+As we mentioned earlier, the registers named 0-9 have a special use. When we perform ordinary yanks and deletes, vim places our latest yank in register 0 and our last nine deletes in registers 1-9. As we continue to make deletions, vim moves the previous deletion to the next number, so register 1 will contain our most recent deletion and register 9 the oldest.

@@ -284,3 +284,369 @@ Because this technique uses the low-level rpm program to perform the in- stallat
 - md5sum – Calculate an MD5 checksum
 
 fstab short for “file system table”.
+
+# chapter 16 – Networking
+
+- ping – Send an ICMP ECHO_REQUEST to network hosts
+- traceroute – Print the route packets trace to a network host
+- ip – Show / manipulate routing, devices, policy routing and tunnels
+- netstat – Print network connections, routing tables, interface statistics, mas- querade connections, and multicast memberships
+- ftp – Internet file transfer program
+- wget – Non-interactive network downloader
+- ssh – OpenSSH SSH client (remote login program)
+
+Secure Shell (SSH) 
+Dynamic Host Configuration Protocol (DHCP)
+virtual private network (VPN)
+
+# chapter 17 – Searching for Files
+
+- locate – Find files by name
+- find – Search for files in a directory hierarchy
+- xargs – Build and execute command lines from standard input
+- touch – Change file times
+- stat – Display file or file system status
+
+```sh
+find ~ -type f -name "*.JPG" -size +1M | wc -l
+```
+Table 17-1: find File Types p244
+Table 17-2: find Size Units p245
+Table 17-3: find Tests p245
+Table 17-4: find Logical Operators p247
+Table 17-6: Predefined find Actions p249
+
+# chapter 18 – Archiving and Backup
+
+- gzip – Compress or expand files
+- bzip2 – A block sorting file compressor
+- tar – Tape archiving utility
+- zip – Package and compress files
+- rsync – Remote file and directory synchronization
+
+Table 18-1: gzip Options p260
+
+tar. If the filename - is specified, it is taken to mean standard input or output, as needed. (By the way, this convention of using - to represent standard input/output is used by a number of other programs, too). 
+```sh
+find playground -name "file-A" | zip -@ file-A.zip
+```
+
+# chapter 19 – Regular Expressions
+
+global regular expression print: grep
+
+Table 19-1: grep Options p276
+The caret (^) and dollar sign ($) characters are treated as anchors in regular expressions.
+Table 19-2: POSIX Character Classes
+
+```sh
+$ echo "AAA" | grep -E 'AAA|BBB|CCC'
+AAA
+```
+
+# chapter 20 – Text Processing
+
+- cat – Concatenate files and print on the standard output
+- sort – Sort lines of text files
+- uniq – Report or omit repeated lines
+- cut – Remove sections from each line of files
+- paste – Merge lines of files
+- join – Join lines of two files on a common field
+- comm – Compare two sorted files line by line
+- diff – Compare files line by line
+- patch – Apply a diff file to an original
+- tr – Translate or delete characters
+- sed – Stream editor for filtering and transforming text
+- aspell – Interactive spell checker (not for mac)
+
+```sh
+sort file1.txt file2.txt file3.txt > final_sorted_list.txt  # the contents will be sorted in the new file
+```
+
+cat , the -A option, which is used to display non- printing characters in the text. 
+
+ctrl - d: stop the input
+
+- du - display disk usage statistics
+
+```sh
+$ expand distros.txt | cut -c 23-           #extract the year of release from our list by expanding the file and using cut to extract every character from the 23rd position to the end of the line
+
+$ diff -c file1.txt file2.txt
+$ diff -Naur old_file new_file > diff_file
+$ patch < patchfile.txt
+
+$ tr -d '\r' < dos_file > unix_file
+```
+
+The name sed is short for stream editor.
+
+# chapter 21 – Formatting Output
+
+- nl – Number lines
+- fold – Wrap each line to a specified length
+- fmt–Asimpletextformatter
+- pr – Prepare text for printing
+- printf – Format and print data
+- groff–Adocumentformattingsystem
+
+```sh
+$ printf "I formatted the string: %s\n" foo
+```
+
+Table 21-6: printf Conversion Specification Examples p350
+
+# chapter 22 – Printing
+
+- pr – Convert text files for printing
+- lpr – Print files
+- a2ps – Format files for printing on a PostScript printer
+- lpstat – Show printer status information
+- lpq – Show printer queue status
+- lprm – Cancel print jobs
+
+# chapter 23 – Compiling Programs
+
+- make – Utility to maintain programs
+
+gcc (GNU C Compiler)
+
+Source code installed by your distribution will be in- stalled in /usr/src, while source code we maintain that's intended for use by multiple users is usually installed in /usr/local/src.
+
+The configure program is a shell script that is supplied with the source tree. 
+
+```sh
+./configure
+make
+make install
+```
+
+# chapter 24 – Writing Your First Script
+
+There are two common permission settings for scripts: 755 for scripts that everyone can execute, and 700 for scripts that only the owner can execute. Note that scripts must be readable to be executed.
+
+For the script to run, we must precede the script name with an explicit path. 
+
+```sh
+$ ./hello_world 
+Hello World!
+$ hello_world
+bash: hello_world: command not found
+# To recap, the system searches a list of directories each time it needs to find an executable program, if no explicit path is specified. 
+
+$ . .bashrc
+# The dot (.) command is a synonym for the source command, a shell builtin that reads a specified file of shell commands and treats it like input from the keyboard.
+```
+
+- ～/bin for personal use
+- /usr/local/bin for everyone on a system
+- /usr/local/sbin for system administrator
+
+# chapter 25 – Starting a Project
+
+There are some rules about variable names:
+1. Variable names may consist of alphanumeric characters (letters and numbers) and underscore characters.
+2. The first character of a variable name must be either a letter or an underscore.
+3. Spaces and punctuation symbols are not allowed.
+
+`variable=value`
+where variable is the name of the variable and value is a **string**.
+it treats them all as strings.
+
+```sh
+a=z # Assign the string "z" to variable a.
+b="a string" # Embedded spaces must be within quotes.
+c="a string and $b" # Other expansions such as variables can be # expanded into the assignment.
+d="$(ls -l foo.txt)" # Results of a command.
+e=$((5 * 7)) # Arithmetic expansion.
+f="\t\ta string\n" # Escape sequences such as tabs and newlines.
+a=5 b="a string"    #Multiple variable assignments may be done on a single line.
+```
+
+During expansion, variable names may be surrounded by optional curly braces, {}.
+
+```sh
+command << token 
+text
+token
+```
+
+# chapter 26 – Top-Down Design
+
+```sh
+# Both forms are equivalent and may be used interchangeably.
+
+function name { 
+    commands
+    return 
+}
+
+name () { 
+    commands
+    return
+}
+```
+
+# chapter 27 – Flow Control: Branching with if
+
+```sh
+if commands; then 
+    commands
+[elif commands; then 
+    commands...]
+[else 
+    commands]
+fi
+
+$ echo $?       # to show the previous exit status value
+```
+The first, shown here:
+`test expression`
+And the second, more popular form, shown here:
+`[ expression ]`
+
+Table 27-1: test File Expressions p420
+Table 27-2: test String Expressions p423
+Table 27-3: test Integer Expressions p425
+
+new version
+`[[ expression ]]`
+The [[ ]] command is similar to test (it supports all of its expressions), but adds an important new string expression.
+`string1 =~ regex`
+This returns true if string1 is matched by the extended regular expression regex.
+
+`(( ))`is used to perform arithmetic truth tests.
+
+```sh
+if [[ ! ("$INT" -ge "$MIN_VAL" && "$INT" -le "$MAX_VAL") ]]; then
+
+# or
+
+if [ ! \( "$INT" -ge "$MIN_VAL" -a "$INT" -le "$MAX_VAL" \) ]; then
+```
+Since all expressions and operators used by test are treated as command arguments by the shell (unlike [[ ]] and (( )) ), characters that have special meaning to bash, such as <, >, (, and ), must be quoted or escaped.
+
+Seeing that test and [[ ]] do roughly the same thing, which is preferable? test is traditional (and part of the POSIX specification for standard shells, which are often used to run system startup scripts), whereas [[ ]] is specific to bash (and a few other mod- ern shells). It’s important to know how to use test since it is widely used, but [[ ]] is clearly more useful and is easier to code, so it is preferred for modern scripts.
+
+# chapter 28 – Reading Keyboard Input
+
+```sh
+read [-options] [variable...]
+```
+
+You Can’t Pipe read p441
+
+echo with the -n option (which suppresses the trailing newline on output) to display a prompt.
+
+If read receives fewer than the expected number, the extra variables are empty, while an excessive amount of input results in the final variable containing all of the extra input.
+
+If no variables are listed after the read command, a shell variable, REPLY, will be as- signed all the input.
+
+IFS (for Internal Field Separator)
+
+The <<< operator indicates a here string. A here string is like a here document, only shorter, consisting of a single string. 
+
+# chapter 29 – Flow Control: Looping with while / until
+
+The syntax of the while command is as follows:
+```sh
+while commands; do
+    commands; 
+done
+```
+
+# chapter 30 – Troubleshooting
+
+Make it a rule to always enclose variables and command substitutions in double quotes unless word splitting is needed.
+
+As a general rule, always precede wildcards (such as * and ?) with ./ to prevent misinterpretation by commands. 
+
+bash also provides a method of tracing, implemented by the -x option and the set command with the -x option.
+
+```sh
+export PS4='$LINENO + '
+```
+
+The leading plus signs indicate the display of the trace to distinguish them from lines of regu- lar output. The plus sign is the default character for trace output. It is contained in the PS4 (prompt string 4) shell variable. 
+
+Note that single quotes are required to prevent expansion until the prompt is actually used.
+
+```sh
+set -x # Turn on tracing
+
+commands
+
+set +x # Turn off tracing
+```
+
+# chapter 31 – Flow Control: Branching with case
+
+```sh
+case word in
+    [pattern [| pattern]...) commands ;;]...
+esac
+
+case "$REPLY" in
+    [[:alpha:]]) echo "is a single alphabetic character." ;; 
+    [ABC][0-9]) echo "is A, B, or C followed by a digit." ;; 
+    ???) echo "is three characters long." ;;
+    *.txt) echo "is a word ending in '.txt'" ;;
+    *) echo "is something else." ;;
+esac
+```
+
+In versions of bash prior to 4.0, case allowed only one action to be performed on a successful match. After a successful match, the command would terminate. 
+
+ Modern versions of bash add the ;;& notation to terminate each action.
+
+ The addition of the ;;& syntax allows case to continue to the next test rather than sim- ply terminating.
+
+# chapter 32 – Positional Parameters
+
+ Table 32-1: The * and @ Special Parameters p481
+
+# chapter 33 – Flow Control: Looping with for
+
+```sh
+for variable [in words]; do 
+    commands
+done
+
+for (( expression1; expression2; expression3 )); do             commands
+done
+```
+
+# chapter 34 – Strings and Numbers
+
+```sh
+$a
+${a}        # This has no effect on the expansion, but is required if the variable is adjacent to other text, which may confuse the shell.
+
+${parameter:-word}
+${parameter:=word}      # In addition, the value of word is assigned to parameter.
+${parameter:?word}
+${parameter:+word}
+
+${!prefix*} 
+${!prefix@}
+
+${#parameter}
+
+${parameter:offset} 
+${parameter:offset:length}
+```
+
+bc - An arbitrary precision calculator language
+
+# chapter 35 - Arrays
+
+The subscripts * and @ can be used to access every element in an array. As with posi- tional parameters, the @ notation is the more useful of the two.
+
+# chapter 36 - Exotica
+
+```sh
+Here are examples of the syntax of a group command:
+{ command1; command2; [command3; ...] }
+Here is the syntax of a subshell:
+(command1; command2; [command3;...])
+```

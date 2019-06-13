@@ -60,6 +60,13 @@ ssh -p port user-name@the-server-ip
 ssh -p 22 root@140.82.17.1
 ```
 
+## restart ssh server
+
+```sh
+sudo launchctl stop com.openssh.sshd
+sudo launchctl start com.openssh.sshd
+```
+
 # 查看环境参数
 ```sh
 printenv            #查看环境参数
