@@ -40,7 +40,8 @@ Windows莫名其妙的出现了空白的系统搜索框：
 
 ## 被其他线程占用的文件的删除办法
 
-从这个页面[Handle v4.11](https://docs.microsoft.com/zh-cn/sysinternals/downloads/handle)下载handle。
+### 方法1 使用Handle
+从这个页面[Handle](https://docs.microsoft.com/zh-cn/sysinternals/downloads/handle)下载handle。
 然后解压到某一路径下，比如`D:/Handel/handle64.exe`
 
 ```sh
@@ -48,3 +49,11 @@ C:\>C:\Handle\handle64.exe filename -a  #显示出所有占用该文件的线程
 taskkill /pid pidnumber /f  #将pidnumber替换为你查到的线程号
 rmdir dirname /s/q  #静默循环删除相关文件及文件夹
 ```
+
+### 方法2 使用 Process Explorer
+
+从这个页面[Process Explorer](https://docs.microsoft.com/zh-cn/sysinternals/downloads/process-explorer)下载Process Explorer。
+
+Press Ctrl+F, and type the filename to see a list of open handles to that file.
+
+Detail info can refer to [How to delete locked files on Windows 10](https://www.windowscentral.com/how-delete-locked-files-windows-10).
