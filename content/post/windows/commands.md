@@ -1,5 +1,5 @@
 ---
-title: "Batch"
+title: "commands"
 date: 2018-07-03T14:02:11+08:00
 draft: true
 tags: ["cmd", "Windows"]
