@@ -21,10 +21,8 @@ On mac, I use Desktop Qt 5.12.0 clang 64bit, so I replace plugins.qmltypes in ~/
 - Explanation <https://doc.qt.io/qt-5/qml-qtqml-qt.html#quit-method>
     >This function causes the QQmlEngine::quit() signal to be emitted. Within the Prototyping with qmlscene, this causes the launcher application to exit; to quit a C++ application when this method is called, connect the QQmlEngine::quit() signal to the QCoreApplication::quit() slot.
 
-<<<<<<< Updated upstream
 # [C++/QML: ListView is not updated on dataChanged signal from QAbstractListModel](https://stackoverflow.com/questions/38630750/c-qml-listview-is-not-updated-on-datachanged-signal-from-qabstractlistmodel)
 You mustn't declare the dataChanged() signal in your class, because you want to emit the signal AbstractItemModel::dataChanged(). If you re-declare it you add a comleptely new and different Signal that is not connected anywhere. If you remove the declaration in acdata.h everything should work fine.
-=======
 # QSqlQuery::value: not positioned on a valid record
 You should call query.first() before you can access returned data. additionally if your query returns more than one row, you should iterate via query.next().
 refering to <https://stackoverflow.com/questions/9000123/qsqlquery-not-positioned-on-a-valid-record>
@@ -45,4 +43,6 @@ refering to <https://stackoverflow.com/questions/9000123/qsqlquery-not-positione
     右键点击选择Show Output查看详细信息
     最后原因为声明了slot，但是却没有为slot添加定义
 
->>>>>>> Stashed changes
+# LNK1158 Qt Cannot run rc.exe
+
+solution: 将rc.exe 的路径添加到系统或者Qt的path路径里面去。
