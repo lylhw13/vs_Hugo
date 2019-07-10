@@ -43,6 +43,9 @@ refering to <https://stackoverflow.com/questions/9000123/qsqlquery-not-positione
     右键点击选择Show Output查看详细信息
     最后原因为声明了slot，但是却没有为slot添加定义
 
+<<<<<<< Updated upstream
 # LNK1158 Qt Cannot run rc.exe
 
 solution: 将rc.exe 的路径添加到系统或者Qt的path路径里面去。
+=======
+>>>>>>> Stashed changes

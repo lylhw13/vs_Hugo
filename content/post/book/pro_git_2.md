@@ -98,7 +98,10 @@ $ cat .gitignore
 # only ignore the TODO file in the current directory, not subdir/TODO
 /TODO
 
-# ignore all files in the build/ directory
+# ignore file
+README.txt
+
+# ignore folder build
 build/
 
 # ignore doc/notes.txt, but not doc/server/arch.txt

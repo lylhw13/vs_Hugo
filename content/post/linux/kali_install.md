@@ -4,6 +4,7 @@ date: 2019-05-26T17:18:09+08:00
 draft: true
 ---
 
+# install kali on vultr
 refer to 
 [How to set up Kali Linux OS in cloud at Just $2.50/Month for penetration testing](https://arulkumar.in/how-to-set-up-kali-linux-in-cloud-at-just-2-50-month-for-penetration-testing/) <br>
 [如何优雅地在VULTR上运行KALI](http://gt4404gb.top/archives/669)
