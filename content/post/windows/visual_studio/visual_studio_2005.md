@@ -9,3 +9,7 @@ refer to <https://stackoverflow.com/questions/9207954/visual-studio-find-in-file
 
 Visual Studio-->Windows-->Reset Window Layout. 
 The resizing of the visual studio made it to hide the option.
+
+# 快捷键
+
+格式化代码 Ctrl + k  Ctrl + f
