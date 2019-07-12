@@ -15,7 +15,7 @@ ping archlinux.org > D:/log.txt #会覆盖之前的结果
 ping archlinux.org >> D:/log.txt #在之前的基础上追加输出
 ```
 
-## 检测 sha 1
+## 检测哈希值
 ```sh
 certUtil -hashfile pathToFileCheck [HashAlgorithm]
 ```
