@@ -22,3 +22,18 @@ __For killing it when it gets hang up__, you can use the ssh escape character:
 ~.
 ```
 That is, press the tilde and then the period, if it doesn't work, press Enter before you press that, that will kill the connection immediately.
+
+## ["some app" can't be opened beacuse it is from an unidentified developer.]
+
+![for_web_show](/media/pic/mac/can't_opened_because_unidentified_developer.png)
+![](../../../static/media/pic/mac/can't_opened_because_unidentified_developer.png)
+
+click the left bottom button, a Mac help will popup.
+
+1. In the Finder, locate the app you want to open.</br>
+    Don’t use Launchpad to do this. Launchpad doesn’t allow you to access the shortcut menu.
+
+2. Control-click the app icon, then choose Open from the shortcut menu.
+
+3. Click Open. </br>
+    The app is saved as an exception to your security settings, and you can open it in the future by double-clicking it just as you can any registered app.
