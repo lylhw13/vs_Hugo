@@ -21,9 +21,9 @@ categories: ["vim"]
 | numberG | To line number. For example, 1G moves to the first line of the file. |
 | G | To the last line of the file. |
 
-# 删除
+## 删除
 
-## 删除双引号中的内容，其他配对括号同理如'', (), {}, <>
+### 删除双引号中的内容，其他配对括号同理如'', (), {}, <>
 
 ```vim
 ci"     #删除引号中的内容，并进入编辑模式
@@ -31,7 +31,7 @@ di"     #删除引号中的内容
 yi"     #复制引号中的内容
 vi"     #选中引号中的内容
 ```
-## 删除到
+### 删除到
 
 ```vim
 dG          #删除到文件结尾
@@ -117,6 +117,15 @@ ctrl + g 会返回如下信息：
 ```vim
 :%s/origin_str/target_str/g    #全局替换命令
 ```
+
+## 查询
+```vim
+:%s/pattern//gn         # 统计出现次数
+```
+参数说明：
+- // - 无替代文本。如果偏好，中间可以加任意字符！建议添加‘～’,重复上次查询
+- g - Replace all occurrences in the line.  Without this argument,  replacement occurs only for the first occurrence in each line.因此，如果不用此标志，就变成统计出现pattern的行数
+- n - Report the number of matches, do not actually substitute.这是核心标志，也是达到目的的标志。同时也说明了为什么'//'之间可以添加任意字符！
 
 ## replace word under cursor
 

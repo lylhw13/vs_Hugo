@@ -23,6 +23,20 @@ chmod +x shadowsocks-all.sh
 
 ## 配置文件
 `/etc/shadowsocks-libev/config.json`
+会自动生成如下的配置：
+{                            
+    "server":"0.0.0.0",      
+    "server_port":19353,     
+    "password":"vultr!.",    
+    "timeout":300,           
+    "user":"nobody",         
+    "method":"aes-256-gcm",  
+    "fast_open":false,       
+    "nameserver":"8.8.8.8",  
+    "mode":"tcp_and_udp",    
+    "plugin":"obfs-server",  
+    "plugin_opts":"obfs=http"
+}                            
 
 # Client 客户端
 
