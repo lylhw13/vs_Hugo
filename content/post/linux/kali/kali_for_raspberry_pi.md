@@ -20,13 +20,9 @@ deb-src http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib
 deb http://mirrors.zju.edu.cn/kali kali-rolling main contrib non-free
 deb-src http://mirrors.zju.edu.cn/kali kali-rolling main contrib non-free
 
-#东软大学
-deb http://mirrors.neusoft.edu.cn/kali kali-rolling/main non-free contrib
-deb-src http://mirrors.neusoft.edu.cn/kali kali-rolling/main non-free contrib
-
-#重庆大学
-deb http://http.kali.org/kali kali-rolling main non-free contrib
-deb-src http://http.kali.org/kali kali-rolling main non-free contrib
+#清华大学
+deb http://mirrors.tuna.tsinghua.edu.cn/kali kali-rolling main contrib non-free
+deb-src https://mirrors.tuna.tsinghua.edu.cn/kali kali-rolling main contrib non-free
 
 #官方源
 deb http://http.kali.org/kali kali-rolling main non-free contrib
@@ -47,7 +43,7 @@ Refer to [How To Setup A Kali Linux Hacking Station On Raspberry Pi 3 Model B+](
 ## Step 1: Download and Install Kali Linux Image
 - 1.1 Download Kali Linux official Raspberry Pi image
 - 1.2 Extract the image from the zip file to a local folder
-- 1.3 Use Win32DiskImager our a similar application to load the image on the SD card
+- 1.3 Use Win32DiskImager or Rufus to load the image on the SD card
 - 1.4 Insert the SD card and start the Raspberry Pi
 
 ## Step 2: Connect to Kali Linux With SSH
@@ -58,13 +54,17 @@ Refer to [How To Setup A Kali Linux Hacking Station On Raspberry Pi 3 Model B+](
 
 ## Step 3: Configure Kali Linux
 
+the default account is user: root, passwd: toor
+
 ```sh
 sudo passwd root            # change root password
 
 sudo apt-get update -y      # update installed packages with default yes
 sudo apt-get upgrade -y     
-sudo apt-get dist-upgrade -y        # update dependencied with default yes
+sudo apt-get dist-upgrade -y        # update dependencies with default yes
 ```
+tips:
+  如果出现Unexpected Size，将官方的源注释掉即可。
 
 ## Step 4: Enable Auto Login Lightdm
 
@@ -107,9 +107,12 @@ Refer to [Use VNC to Remotely Access Your Raspberry Pi from Other Devices](https
 
 ```sh
 apt-get install tightvncserver
+tightvncserver      # start the tightvncserver
 
 vim /etc/init.d/vncboot     # insert the script below into the blank document
+
 chmod 755 /etc/init.d/vncboot
+cd /etc/init.d
 update-rc.d vncboot defaults
 
 reboot
@@ -156,13 +159,66 @@ exit 0
 
 ## Step 6: Configure WiFi Connection
 
+1. Edit network/interfaces configuration file
+  ```sh
+  vim /etc/network/interfaces
+  ```
+
+  ```sh
+  # Add the code bellow. (Remove quotes)
+ 
+  auto wlan0
+  allow-hotplug wlan0
+  iface wlan0 inet dhcp
+  wpa-ssid "YourNetworkName"
+  wpa-psk "YourPassword"
+  ```
+  
+2. Reboot
+  ```sh
+  sudo reboot
+  ```
 
 # Optional Install Full Kali Linux Image
 Need a 32 gb SD car
 ```sh
 sudo apt-get install kali-linux-full
 ```
+
+# After installing kali linux
+
+- Change SSH Keys & Default Password
+  ```sh
+  $ cd /etc/ssh
+  $ dpkg-reconfigure openssh-server
+
+  rescue-ssh.target is a disabled or a static unit, not starting it.
+  ```
+  ```sh
+  $ passwd root
+
+  Enter new UNIX password:
+  Retype new UNIX password:
+  passwd: password updated successfully
+  ```
   
 
 
+# Some Problem
 
+## 1
+```txt
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+    LANGUAGE = (unset),
+    LC_ALL = (unset),
+    LANG = "en_US.UTF-8"
+are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+```
+
+Solution:
+
+removing `AcceptEnv LANG LC_*` from `/etc/ssh/sshd_config` finally resolved it.
+
+Refer to <https://stackoverflow.com/questions/2499794/how-to-fix-a-locale-setting-warning-from-perl/27724459>

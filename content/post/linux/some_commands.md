@@ -101,3 +101,11 @@ After:
 127.0.0.1       new_name localhost
 ```
 
+## 统计行数
+
+```sh
+wc [-clw] file_name
+```
+- -c the number of bytes
+- -l the number of lines
+- -w the number of words
