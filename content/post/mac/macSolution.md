@@ -37,3 +37,21 @@ click the left bottom button, a Mac help will popup.
 
 3. Click Open. </br>
     The app is saved as an exception to your security settings, and you can open it in the future by double-clicking it just as you can any registered app.
+
+
+## [How to view Root directory and subdirectories in Finder?](https://apple.stackexchange.com/questions/34871/how-to-view-root-directory-and-subdirectories-in-finder)
+
+### Go to hidden folder
+`Shift`-`Command`-`G` in Finder brings up a "Go to folder" dialog. Type in the name of the directory, for example, /usr/local. Finder will show the directory. I use this with Finder in 'View as Columns'
+
+If the subfoler doesn't show in current foler
+Enter in Terminal:
+```sh
+sudo chflags nohidden directoryname
+```
+Whereby directory name is the name of the directory that you want to see in Finder.
+
+Reverse this by typing:
+```sh
+sudo chflags hidden directoryname
+```

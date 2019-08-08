@@ -58,7 +58,7 @@ Table 3-3: less Commands p43
 
 If you are using a mouse, you can double click on a filename to copy it and middle click to paste it into commands.
 
-Table 3-4: Directories Found on Linux Systems p44
+`Table 3-4: Directories Found on Linux Systems` p44
 
 # chapter 4 – Manipulating Files and Directories
 - cp – Copy files and directories
