@@ -143,28 +143,28 @@ ggVG"+y         #复制到系统剪切板
 -   G  光标移到最后一行 
 
 
-## copy to clipboard
+## 寄存器 
 refer to <https://stackoverflow.com/questions/3961859/how-to-copy-to-clipboard-in-vim>
 
-The * register will do this. 
+名称 | 符合
+-- | --
+无名寄存器 | ""
+复制专用寄存器 | "0
+有名寄存器 | "a - "z
+黑洞寄存器 | "_
+系统剪切板 | "+
+选择专用寄存器 | "*
+
+- 寄存器 ”“
+
 In Windows, + and * are equivalent. In unix there is a subtle difference between + and *:
 
->Under Windows, the * and + registers are equivalent. For X11 systems, though, they differ. For X11 systems, * is the selection, and + is the cut buffer (like clipboard). http://vim.wikia.com/wiki/Accessing_the_system_clipboard
+>Under Windows, the * and + registers are equivalent. For X11 systems, though, they differ. For X11 systems, * is the selection, and + is the cut buffer (like clipboard). 
 
 `*` is probably what you want most of the time, so I use * because it functions as I expect it to in both environments.
 
-In Linux distros, for some reason, you have to install vim-gtk first to gain clipboard functionality.
-
-And for those confused about how to use registers when yanking or putting, you merely write " then the name of the register. So for copying something to the clipboard register you type ` "*y ` and then to put you type ` "*p `
 
 
-参考https://www.zhihu.com/question/19863631/answer/89354508
-
-Vim 中的复制、删除的内容都会被存放到默认（未命名）寄存器中，之后可以通过粘贴操作读取默认寄存器中的内容。寄存器是完成这一过程的中转站，Vim 支持的寄存器非常多，其中常用的有 a-zA-Z0-9+“。其中：
-- 0-9：表示数字寄存器，是 Vim 用来保存最近复制、删除等操作的内容，其中 0 号寄存器保存的是最近一次的操作内容。
-- a-zA-Z：表示用户寄存器，Vim 不会读写这部分寄存器
-- "（单个双引号）：未命名的寄存器，是 Vim 的默认寄存器，例如删除、复制等操作的内容都会被保存到这里。
-- +：剪切板寄存器，关联系统剪切板，保存在这个寄存器中的内容可以被系统其他程序访问，也可以通过这个寄存器访问其他程序保存到剪切板中的内容。
 
 ## join two lines
 J joins the two lines and moves you at the start of the text you wanted to delete. This deletes a new-line character and the indentation of the line you want to move.
@@ -179,6 +179,9 @@ p - paste line from buffer
 ## 列编辑
 [Vim 的纵向编辑模式](https://www.ibm.com/developerworks/cn/linux/l-cn-vimcolumn/index.html)
 
+在 Vim 命令模式下，键入 ctrl-v后状态栏上出现 VISUAL BLOCK 字样，即进入纵向编辑模式。
+
+在 Windows 版本的 Vim 中，键组合 ctrl-v通常被映射为文本粘贴，所以 Window 版的 Vim 的纵向编辑模式由 ctrl-q启动。
 
 
 ```vim

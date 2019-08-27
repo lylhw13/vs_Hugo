@@ -19,6 +19,11 @@ Markdown 中可以简便地只在每一个需要强制换行的段落的首行�
 - *This text* is italic
 - _This text_ is italic
 
+===test===
+
+<!-- delete -->
+~~This text~~ is delete
+
 <!-- Horizontal Rule-->
 
 ---
