@@ -16,6 +16,17 @@ Default initialization
 - variables defined outside any function body are initialized to zero.
 - variables of built-in type defined inside a function are unitialized.
 
+## 2.3
+```c++
+int &refVal2;           // error: a reference must be initialized.
+int &refVal4 = 10;      // error: initializer must be an object.
+double dval = 3.14;
+int &refVal5 = dval;    // error: initialzer must be an int object. 
+```
+
+## 2.6
+In-class initializers are restricted as to thr form, we can use: They must either be enclosed inside curly braces or follow an = sign. We may not specify an in-class initializer inside parentheses.
+
 # chapter 3
 
 - A string is a variable-length sequence of characters.
@@ -38,6 +49,18 @@ int main() {
     int ia2[10];        // all elements are undefined
 }
 ```
+
+arrays are not class types, so these functions are not member functions. (p118)
+```c++
+int ia[] = {...};
+int *beg = begin(ia);
+
+vector<int> vec = {...};
+vector<int>::iterator beg = vec.begin();
+```
+
+Unlike subscripts for vector and string, the index of the built-in subscript operator is not an unsigned type. (p121)
+
 
 ## 3.6 Multidimensional Arrays
 
@@ -81,21 +104,23 @@ A continue statement terminates the current iteration of the nearest enclosing l
 
 # chapter 6
 
-Array have two special properties:  `p214`
-- we cannot copy an array.
-- when we use an array it is (usually) converted to a pointer.
+## 6.2
+- Because we cannot copy an array, we cannot pass an array by value. 
+- Because array are converted to pointers, when we pass an array to a function, we are actually passing a pointer to the array's first element. (p214)
 
-arrays are not class types, so these functions are not member functions. (p118)
+Because we cannot copy an array, a function cannot return an array. However, a function can return a pointer or a refferenc to an array. (p228)
 ```c++
-int ia[] = {...};
-int *beg = begin(ia);
-
-vector<int> vec = {...};
-vector<int>::iterator beg = vec.begin();
+typedef int arrT[10];
+using arrT = int[10];
+arrT* func(int i);
 ```
 
-Unlike subscripts for vector and string, the index of the built-in subscript operator is not an unsigned type. (p121)
+## 6.7
+Just as with arrays, when we pass a function as an argument, it will be automatically converted to a pointer.
 
+As with arrays, we can't return a function type but can return a pointer to a function type.
+
+It is important to note that `decltype` returns the function type, not a pointer to function type.
 
 # chapter 7
 ```c++
@@ -111,6 +136,7 @@ A constructor that can be called with a single argument defines an implicit conv
 when we define a member outside the class, we do not repeat the keyword:
 - explicit      `p296`
 - static        `p302`
+- virtual       `p595`
 
 ### 7.5.6
 In addition to the arithmetic types, references, and pointers, certain calles are also literal types.
@@ -176,6 +202,18 @@ we cannot supply an element initializer inside the parentheses.
 char arr[0];                //error
 char *cp = new char[0];     //ok, but cp can't be dereferenced
 ```
+
+# chapter 13
+
+tilde ~
+
+# chapter 15
+
+## 15.2
+The declartation contains the class name but does not include its derivation list.
+
+There is No implicit conversion from base to derived and No conversion between objects.
+
 # chapter 18
 
 ## 18.2 Namespaces
