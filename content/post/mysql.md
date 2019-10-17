@@ -67,3 +67,9 @@ create database NAME;   # 创建一个数据库
 drop database NAME;     # 删除一个数据库
 ```
 http://blog.51yip.com/mysql/1005.html
+
+# Start mysql
+```sql
+> mysql -u root -p
+Enter password: root
+```
