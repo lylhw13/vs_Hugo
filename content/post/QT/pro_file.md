@@ -27,3 +27,14 @@ macx: {
 `mac`: it applies both on Mac OS X and iOS
 
 `macx`: it is specific to Mac OS X.
+
+## add macos sdk
+
+check the Qt/5.13.0/clang_64/mkspecs/qdevice.pri
+```pri
+QMAKE_APPLE_DEVICE_ARCHS = x86_64
+QMAKE_MAC_SDK = macosx
+GCC_MACHINE_DUMP =
+```
+
+so, add `QMAKE_MAC_SDK = macosx` to the pro file.

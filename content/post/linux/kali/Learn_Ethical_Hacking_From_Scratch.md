@@ -702,3 +702,124 @@ set security to low
    <http://toolbar.netcraft.com/site_report?url=>
 3. Rebtex DNS lookup - Shows comprehensive info about the target website.
    <https://www.robtex.com/>
+
+## chapter 107
+
+To find websites on the same server:
+1. Use Robtex DNS lookup under "names pointing to same IP"
+2. Using bing.com, search for ip:[target ip]
+
+## chapter 108
+
+Knock can be used to find subdomains of target:
+```sh
+git clone https://github.com/guelfoweb/knock.git
+cd knock/knockpy
+python knockpy.py [target url]
+```
+
+## chapter 109
+
+Find files & directories in target website
+
+A tool called dirb
+> dirb [target url] [wordlist] [options] 
+
+Mutillidae: Born to be hacked
+
+## chapter 111
+
+File upload vulns
+
+Upload a php shell or backdoor, ex: weevly
+```sh
+# generate a shell
+weevly generate [passwd] [file name]
+# after uploading the shell
+weevly [shell url] [passwd]
+help     # show help info
+```
+
+## chapter 112
+
+Code execution vulns
+
+```sh
+ls; pwd
+nc -vv -l -p 8080
+```
+
+## chapter 113
+
+LFI: Local file inclusion
+
+- Allows an attacker read any file on the same server.
+- Access files outside www directory.
+
+## chapter 114
+
+RFI: Remote file inclusion
+
+```sh
+sudo vim /etc/php5/cgi/php.ini
+# after modify the php.ini, need to restart
+sudo /etc/init.d/apaches restart
+```
+
+## chapter 115
+
+remote file should be store as txt. If not it will execute on the remote server, not on the target server.
+
+## chapter 116
+
+1. File Upload Vulns - only allow safe files to be uploaded
+2. Code execution vunls:
+   - Don't use dangerous fun ction.
+   - Filter use input before execution.
+3. File inclusion:
+   - Disable allow_url_fopen & allow_url_inclue.
+   - Use static file inclusion.
+
+## chapter 117
+
+SQL injection
+
+## chapter 119
+
+Discovering SQLI
+
+## chapter 121
+
+url should be encoded
+
+## chapter 122
+
+union
+
+## chapter 126
+
+SQLMAP
+
+```sh
+sqlmap --help
+sqlmap -u [target url]
+```
+
+## chapter 128
+
+XSS - Cross Site Scripting Vulns
+
+Three main types:
+- Persistent/Stored XSS
+- Reflected XSS
+- DOM based XSS
+
+## chapter 129
+
+Discovering XSS
+
+http://target.com/page.php?something=something
+
+## chapter 133
+
+ZAP: Zed Attack Proxy

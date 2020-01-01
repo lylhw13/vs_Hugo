@@ -27,14 +27,15 @@ commands | function
 
 | commands | function |
 | --- | --- |
-| option + esc | read the word |
+| `option + esc`| read the word |
 
 | commands | function |
 | --- | --- |
-| shift + option + ? | ¿ |
-
+| `shift + option + ?` | ¿ |
 
 Reference: [Top 10 Mac keyboard shortcuts everyone should know](https://www.cultofmac.com/317935/top-10-mac-keyboard-shortcuts/)
+
+In the Finder, press ⌘⇧G to Go to Folder.
 
 # Terminal
 
@@ -87,6 +88,10 @@ rm -rf          #force to delete a non-empty folder
 
 ## zip
 refer to <https://apple.stackexchange.com/questions/12371/how-can-i-compress-a-folder-into-multiple-zip-files>
+
+-r  --recurse-paths
+
+-s splitsize    --split-size splitsize
 
 Use the -s switch on the zip command in terminal. So if your folder was called FolderName
 

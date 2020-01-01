@@ -39,7 +39,7 @@ SQL（发音为字母 S-Q-L或 sequel）是 Structured Query Language（结构�
 
 
 
-```mysql
+```sql
 select * from table_name limit 1 offset 3 -- 从偏移3条的位置选一条
 
 -- 这是一条注释
@@ -342,6 +342,7 @@ ON Vendors.vend_id = Products.vend_id;
 
 - 自联结
 用自联结而不用子查询自联结通常作为外部语句，用来替代从相同表中检索数据的使用子查询语句。虽然最终的结果是相同的，但许多 DBMS处理联结远比处理子查询快得多。
+事实上，我们迄今为止建立的每个内联结都是自然联结，很可能永远都不会用到不是自然联结的内联结。
 ```SQL
 SELECT c1.cust_id, c1.cust_name, c1.cust_contact
 FROM Customers AS c1, Customers AS c2
@@ -350,6 +351,8 @@ AND c2.cust_contact = 'Jim Jones';
 ```
 
 - 外联结
+许多联结将一个表中的行与另一个表中的行相关联，但有时候需要包含没有关联行的那些行。
+在使用 OUTER JOIN 语法时，必须使用 RIGHT 或 LEFT 关键字指定包括其所有行的表(RIGHT 指出的是 OUTER JOIN 右边的表，而 LEFT 指出的是 OUTER JOIN 左边的表)。
 ```SQL
 SELECT Customers.cust_id, Orders.order_num
 FROM Customers LEFT OUTER JOIN Orders
@@ -438,3 +441,145 @@ FROM Customers;
 ```
 
 SELECT INTO 是试验新 SQL语句前进行表复制的很好工具。先进行复制，可在复制的数据上测试 SQL代码，而不会影响实际的数据。
+
+# chapter 16 更新和删除数据
+
+```SQL
+UPDATE Customers
+SET cust_contact = 'Sam Roberts',
+    cust_email = 'sam@toyland.com'
+WHERE cust_id = '1000000006';
+```
+
+```SQL
+DELETE FROM Customers
+WHERE cust_id = '1000000006';
+```
+DELETE 语句从表中删除行，甚至是删除表中所有行。但是，DELETE 不删除表本身。
+如果想从表中删除所有行，不要使用 DELETE。可使用 TRUNCATE TABLE 语句，它完成相同的工作，而速度更快(因为不记录数据的变动)。
+
+# chapter 17 创建和操纵表
+
+```SQL
+CREATE TABLE Products
+(
+    prod_id  CHAR(10)   NOT NULL,
+    vend_id  CHAR(10)   NOT NULL,
+    prod_name  CHAR(254)    NOT NULL,
+    prod_price  DECIMAL(8,2)    NOT NULL    DEFAULT 1,
+    prod_desc  VARCHAR(1000)    NULL,
+};
+```
+在不指定 NOT NULL 时，多数 DBMS 认为指定的是 NULL，但不是所有 的 DBMS 都这样。某些 DBMS 要求指定关键字 NULL，如果不指定将 出错。
+
+- ALTER 更改表结构: 给已有表增加列可能是所有 DBMS 都支持的唯一操作
+
+```SQL
+ALTER TABLE Vendors
+ADD vend_phone CHAR(20);
+```
+
+```SQL
+DROP TABLE CustCopy;    -- 删除表
+```
+
+# chapter 18 使用视图
+
+视图是虚拟的表。与包含数据的表不一样，视图只包含使用时动态检索数据的查询。
+作为视图，它不包含任何列或数据，包含的是一个查询。
+
+为什么使用视图：
+- 重用SQL语句
+- 简化复杂的 SQL 操作。在编写查询后，可以方便地重用它而不必知道 其基本查询细节。
+- 使用表的一部分而不是整个表。
+- 保护数据。可以授予用户访问表的特定部分的权限，而不是整个表的访问权限。
+- 更改数据格式和表示。视图可返回与底层表的表示和格式不同的数据。
+
+```SQL
+CREATE VIEW ProductCustomers AS
+SELECT cust_name, cust_contact, prod_id
+FROM Customers, Orders, OrderItems
+WHERE Customers.cust_id = Orders.cust_id
+AND OrderItems.order_num = Orders.order_num;
+```
+
+```SQL
+DROP VIEW viewname;     -- delete view
+```
+
+# chapter 19 使用存储过程
+
+存储过程就是为以后使用而保存的一条 或多条 SQL 语句。可将其视为批文件，虽然它们的作用不仅限于批处理。
+
+# chapter 20 管理事物处理
+
+使用事务处理(transaction processing)，通过确保成批的 SQL 操作要么完全执行，要么完全不执行，来维护数据库的完整性。
+
+- 事务(transaction)指一组 SQL 语句;
+- 回退(rollback)指撤销指定 SQL 语句的过程;
+- 提交(commit)指将未存储的 SQL 语句结果写入数据库表;
+- 保留点(savepoint)指事务处理中设置的临时占位符(placeholder)，可以对它发布回退(与回退整个事务处理不同)。
+
+事务处理用来管理 INSERT、UPDATE 和 DELETE 语句。不能回退 SELECT 语句(回退 SELECT 语句也没有必要)，也不能回退 CREATE 或 DROP 操作。
+
+# chapter 21 使用游标
+
+结果集(result set) SQL 查询所检索出的结果。
+
+游标(cursor)是一个存储在 DBMS 服务器上的数据库查询， 它不是一条 SELECT 语句，而是被该语句检索出来的结果集。在存储了 游标之后，应用程序可以根据需要滚动或浏览其中的数据。
+
+```SQL
+DECLARE CustCursor CURSOR
+FOR
+SELECT * FROM Customers
+WHERE cust_email IS NULL
+```
+
+```SQL
+OPEN CURSOR CustCursor
+
+CLOSE CustCursor
+```
+
+# chapter 22 高级SQL特性
+
+表中任意列只要满足以下条件，都可以用于主键。
+- 任意两行的主键值都不相同。
+- 每行都具有一个主键值(即列中不允许 NULL 值)。
+- 包含主键值的列从不修改或更新。
+- 主键值不能重用。如果从表中删除某一行，其主键值不分配给新行。
+
+外键是表中的一列，其值必须列在另一表的主键中。外键是保证引用完整性的极其重要部分。
+外键有助防止意外删除
+
+唯一约束用来保证一列(或一组列)中的数据是唯一的。它们类似于主键，但存在以下重要区别。
+- 表可包含多个唯一约束，但每个表只允许一个主键。
+- 唯一约束列可包含 NULL 值。
+- 唯一约束列可修改或更新。
+- 唯一约束列的值可重复使用。
+- 与主键不一样，唯一约束不能用来定义外键。
+
+```SQL
+ADD CONSTRAINT CHECK (gender LIKE '[MF]')
+```
+
+索引用来排序数据以加快搜索和排序操作的速度。
+
+数据库索引的作用也一样。主键数据总是排序的，这是 DBMS 的工作。 因此，按主键检索特定行总是一种快速有效的操作。
+
+可以在一个或多个列上定义索引，使 DBMS 保存 其内容的一个排过序的列表。在定义了索引后，DBMS 以使用书的索引 类似的方法使用它。
+
+在开始创建索引前，应该记住以下内容。
+- 索引改善检索操作的性能，但降低了数据插入、修改和删除的性能。 在执行这些操作时，DBMS 必须动态地更新索引。
+- 索引数据可能要占用大量的存储空间。
+- 并非所有数据都适合做索引。取值不多的数据(如州)不如具有更多可能值的数据(如姓或名)，能通过索引得到那么多的好处。
+- 索引用于数据过滤和数据排序。如果你经常以某种特定的顺序排序数据，则该数据可能适合做索引。
+- 可以在索引中定义多个列(例如，州加上城市)。这样的索引仅在以州加城市的顺序排序时有用。如果想按城市排序，则这种索引没有用处。
+
+```SQL
+CREATE INDEX prod_name_ind
+ON Products (prod_name);
+```
+索引必须唯一命名。
+
+一般来说，约束的处理比触发器快，因此在可能的时候，应该尽量使用约束。
