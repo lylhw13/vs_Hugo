@@ -31,3 +31,35 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/p
 # command not found
 - modify the ~/.zshrc, then add the new path.
 - source ~/.zshrc
+
+## use proxy
+
+通过命令打开文件，然后在后续添加你的代理地址
+```sh
+# 打开配置文件
+vim ~/.bash_profile
+# 如果用了`oh-my-zsh` 那么修改`~/.zshrc`
+# 在后面新增配置
+export http_proxy=http://127.0.0.1:1087
+export https_proxy=$http_proxy
+# 同理，可能执行` source ~/.zshrc`
+source ~/.bash_profile
+```
+
+修改测试
+可以通过如下方式进行测试
+```sh
+# 方式1：输入如下命令,看看显示的运行商是什么，如果是国外那么就ok
+curl cip.cc
+
+# 方式2：通过google测试，有结果，说明Ok
+curl -i https://google.com
+```
+
+### 快速切换
+
+可以在 ~/.zshrc 或者 ~/.bash_profile 中添加这样的alias：
+```sh
+alias useproxy='export all_proxy=socks5://127.0.0.1:1086'
+alias disproxy='unset all_proxy'
+```

@@ -60,6 +60,7 @@ open setting.json, add the path of the envs folder as following. and restart.
    export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
    source /usr/local/bin/virtualenvwrapper.sh
    ```
+   WORKON_HOME 就是创建的virtualenv的地址
 5. 创建虚拟环境，可以指定python版本
     ```sh
     mkvirtualenv -p python new_env_name
@@ -74,6 +75,23 @@ open setting.json, add the path of the envs folder as following. and restart.
     ```sh
     rmvirtualenv  ENVNAME      # delete a env
     ```
+
+
+## Proxy
+
+创建虚拟环境时，如果需要proxy，如果使用下面代码会出现错误如下：
+```sh
+export all_proxy=socks5://127.0.0.1:1086
+
+#Could not install packages due to an EnvironmentError: Missing dependencies for SOCKS support.
+```
+将上句修改为：
+```sh
+export all_proxy="https://127.0.0.1:1086"
+```
+- refer to <https://stackoverflow.com/a/39959360>
+- refer to <https://github.com/pypa/virtualenv/issues/1156>
+
 
 ```sh
 scrapy shell "https://book.douban.com/subject/25900156/" -s USER_AGENT="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"
@@ -94,3 +112,20 @@ https://httpbin.org
 
 
 https://kyfw.12306.cn/otn/czxx/queryByTrainNo?train_no=5l000G193220&from_station_telecode=NKH&to_station_telecode=LLF&depart_date=2019-01-31
+
+# pip
+
+## use pip with socks proxy
+
+refer to <https://stackoverflow.com/questions/22915705/how-to-use-pip-with-socks-proxy>
+
+```sh
+pip install pysocks
+pip install <yourpacakge> --proxy socks5:127.0.0.1:1086
+```
+
+## some commands
+
+```sh
+pip help
+```

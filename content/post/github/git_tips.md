@@ -52,6 +52,18 @@ git clone --recurse-submodules https://github.com/spyder-ide/spyder.git -j8
 ```
 Tips: -j8 is an optional performance optimization that became available in version 2.8, and fetches up to 8 submodules at a time in parallel — see man git-clone.
 
+## Throw away local commits in Git
+refer to <https://stackoverflow.com/questions/5097456/throw-away-local-commits-in-git>
+
+Delete the most recent commit:
+```git
+git reset --hard HEAD~1
+```
+Delete the most recent commit, without destroying the work you've done:
+```git
+git reset --soft HEAD~1
+```
+
 # Problems
 
 ## Asking for entering passphrase for C:\User\TEM/.ssh/id_rsa every time.

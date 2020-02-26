@@ -37,3 +37,18 @@ syntax on
 
 # 退出插入模式
 `Esc` or `ctrl + [`
+
+# 设置主题配色
+
+- clone 之
+git clone https://github.com/altercation/solarized
+- 拷贝 vim 主题
+cd solarized/vim-colors-solarized/
+mkdir -p ~/.vim/colors
+cp colors/solarized.vim ~/.vim/colors/
+- 配置 vim
+vim ~/.vimrc
+syntax on
+set background=dark
+colorscheme solarized
+set backspace=2

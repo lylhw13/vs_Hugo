@@ -19,3 +19,11 @@ ping archlinux.org >> D:/log.txt #在之前的基础上追加输出
 ```sh
 certUtil -hashfile pathToFileCheck [HashAlgorithm]
 ```
+
+## 查看内存条信息
+
+打开terminal
+```sh
+wmic
+memorychip
+```

@@ -16,6 +16,9 @@ who -- display who is logged in
 man - format and display the on-line manual pages
 与普通文件不同的是，目录文件永远不为空，每个目录都至少包含"." 和 ".."
 
+## 1
+/dev/tty，这是键盘和显示器的设备描述文件，向这个文件写相当于显示在用户屏幕上，读相当于从键盘获取用户的输入。
+
 ## 3
 dir, dirent -- directory file format
 

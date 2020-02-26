@@ -15,6 +15,7 @@ commands | function
 commands | function
 -- | --
 `command + q` | quit any mac program
+`option + command + esc` | force quit
 `command + w` | close the current active tab
 `command + option + w` | close all the tabs
 `command + t` | open a new web browser tab
