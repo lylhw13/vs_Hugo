@@ -64,6 +64,17 @@ Delete the most recent commit, without destroying the work you've done:
 git reset --soft HEAD~1
 ```
 
+## Override local files
+```git
+git fetch --all
+git reset --hard <remote>/<branch_name>
+```
+For example
+```git
+git fecth -all
+git reset --hard origin/master
+```
+
 # Problems
 
 ## Asking for entering passphrase for C:\User\TEM/.ssh/id_rsa every time.

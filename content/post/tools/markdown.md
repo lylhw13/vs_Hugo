@@ -59,3 +59,14 @@ and here
 - H<sub>2</sub>O 
 - m<sup>2</sup>
 
+
+## 公式
+分为两种排版：
+- 行内公式：用\ 或者 $ 包裹公式
+- 独立公式：用 \$\$ 包裹公式。
+
+
+\displaystyle - Used to over-ride automatic style rules and force display style.
+
+$${\displaystyle {\hat {\boldsymbol {\beta }}}=(\mathbf {X} ^{\mathsf {T}}\mathbf {X} )^{-1}\mathbf {X} ^{\mathsf {T}}\mathbf {y}}$$
+
