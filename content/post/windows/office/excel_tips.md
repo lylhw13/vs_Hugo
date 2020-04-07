@@ -9,6 +9,7 @@ draft: true
 =MOD(ROW(),2)=0
 =AND(MOD(ROW(),2)=1, ROW()>2)
 =TEXT(C1/D1, "0.00%")
+=IF(C2="yes",1,2)
 ```
 
 # Some operations
