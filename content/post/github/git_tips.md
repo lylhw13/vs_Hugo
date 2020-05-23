@@ -87,3 +87,12 @@ refer to
 - <https://github.com/cmderdev/cmder/issues/1781>
 - <https://stackoverflow.com/questions/21095054/ssh-key-still-asking-for-password-and-passphrase>
 
+## 查询当前分支的版本号
+
+```git
+# 查看当前版本号
+git rev-parse HEAD 
+
+# 反向打印日志
+git log --reverse
+```
