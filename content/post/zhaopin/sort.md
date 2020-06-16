@@ -1,0 +1,62 @@
+---
+title: "Sort"
+date: 2020-06-13T13:41:54+08:00
+draft: true
+---
+
+稳定排序：
+插入排序，归并排序
+
+不稳定排序：
+选择排序，希尔排序，快速排序，堆排序
+
+
+
+# 序列式容器 sequence containers
+
+vector
+插入和删除操作可能造成记忆体重新配置，导致原有的迭代器全部失效。
+
+list
+空间不连续，插入操作insert 和接合操作slice 都不会造成原有list迭代器失效。删除操作erase也只有“指向被删除元素”的那个迭代器失效，其他迭代器不受任何影响。
+
+deque
+vector是单向开口的连续线性空间，deque则是一种双向开口的连续线性空间。
+
+stack
+以deque作为底部结构，属于容器配接器 container adapter。 stack不提供遍历功能，也不提供迭代器。
+
+queue
+以deque作为底部结构，属于容器配接器 container adapter。 queue不提供遍历功能，也不提供迭代器。
+
+heap
+heap不属于stl容器组件，完全二叉树内没有任何节点漏洞，这带来一个极大的好处是可以利用array或vector来储存节点，但是array无法动态改变大小，而heap需要这项功能，因此选用vector
+
+priority_queue
+以vector为底部结构，属于容器配接器 container adapter。priority_queue不提供遍历功能，也不提供迭代器。
+
+slist
+根据stl习惯，插入操作会将新元素插入于指定位置之前，而非之后
+
+# 关联式容器 associative containers
+
+set 和 map 以RB-tree 红黑树作为底层机制。
+
+set， map
+所有元素都会根据元素的键值自动被排序。set和map拥有于list相同的某些性质：进行新增insert操作或删除操作erase时，操作之后所有的迭代器议案有效。当然被删除的那个元素的迭代器例外。
+
+multiset 和multimap特性和set，map完全相同，唯一的差别就在于它允许键值重复，因此它的插入操作采用的是底层机制RB-tree的insert_equal()而非insert_unique()。
+
+
+unordered_set 和 unordered_map以hash table作为底层结构。
+没有自动排序的功能
+
+解决哈希碰撞问题，常用的包括：
+- 线性探测 linear probing   主集团问题 primary clusteing
+- 二次探测 quadratic probing 次集团问题 secondary clustering
+- 开链 separate chaining， STL的hash table便是采用这种做法，表格负载系数将大于1
+
+hash_multiset 和hash_multimap特性和hash_set，hash_map完全相同，唯一的差别就在于它允许键值重复，因此它的插入操作采用的是底层机制hash table的insert_equal()而非insert_unique()。
+
+二叉搜索树具有对数平均时间的表现，但这样的表现构造在一个假设上：输入的数据有足够的随机性。
+而哈希表的数据结构，在插入，删除，搜寻等操作上也具有“常数平均时间”的表现，而且这种表现以统计为基础，不需仰赖输入元素的随机性。

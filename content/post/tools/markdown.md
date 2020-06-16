@@ -69,4 +69,3 @@ and here
 \displaystyle - Used to over-ride automatic style rules and force display style.
 
 $${\displaystyle {\hat {\boldsymbol {\beta }}}=(\mathbf {X} ^{\mathsf {T}}\mathbf {X} )^{-1}\mathbf {X} ^{\mathsf {T}}\mathbf {y}}$$
-

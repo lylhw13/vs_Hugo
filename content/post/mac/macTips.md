@@ -108,3 +108,12 @@ if want to encrypt, use -e
 The size is  given  as  a  number  followed optionally  by  one  
 of  k (kB), m (MB), g (GB), or t (TB) (the default is m). [1]
 Use zipsplit to split a zip file in to multiple smaller zipfiles. Use the -n switch to set the size of the splits.
+
+## chapter 15
+
+else子句抛出的异常不会由前面的except子句处理。
+
+在所有情况下，如果异常或者return，break或者continue语句导致控制权跳到了复合语句到主块之外，else子句也会被跳过。
+
+与函数和模块不同，with块没有定义新的作用域。
+

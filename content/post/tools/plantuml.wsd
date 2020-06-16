@@ -1,0 +1,15 @@
+---
+title: "Plantuml"
+date: 2020-04-11T15:13:47+08:00
+draft: true
+---
+
+
+@startuml
+class Dummy {
+    - private filed1
+    # protected filed2
+    ~ package method1()
+    + public method2()
+}
+@enduml
