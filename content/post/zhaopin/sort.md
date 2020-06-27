@@ -60,3 +60,29 @@ hash_multiset 和hash_multimap特性和hash_set，hash_map完全相同，唯一�
 
 二叉搜索树具有对数平均时间的表现，但这样的表现构造在一个假设上：输入的数据有足够的随机性。
 而哈希表的数据结构，在插入，删除，搜寻等操作上也具有“常数平均时间”的表现，而且这种表现以统计为基础，不需仰赖输入元素的随机性。
+
+# vector
+`所有标准库容器都（默认）使用默认分配器，它用new分配空间，用delete释放空间。`存储的内容应该分配在堆上。容器本身在栈上。
+
+扩容比率为2比数学上的最小平均内存优化因子1.618要大，其目的是当内存容量足够时为系统提供更优的运行时性能。
+size为数据长度，capacity为空间大小。
+
+- clear
+  只将size置0，不一定修改capacity。
+- resize
+  如果n比size()小，删除n之后的内容；如果n比size()大，用新值填充；如果比capacity()大，会重新分配内存，其他情况不会改变。
+- shrink_to_fit
+  无参数，将容器的capacity缩小到size，但不一定保证。不改变size和元素。
+- swap
+  `vector<int>().swap(v);`可用于清空内存。
+
+```c++
+// will allocate the vector, i.e. the header info, on the stack, but the elements on the free store ("heap").
+vector<Type> vect;
+
+// allocates everything on the free store.
+vector<Type> *vect = new vector<Type>;
+
+// will allocate the vector on the stack and a bunch of pointers on the free store
+vector<Type*> vect;
+```
