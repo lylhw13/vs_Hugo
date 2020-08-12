@@ -85,3 +85,14 @@ class B2 的第一个非静态成员 b 是基类类型，所以它不是 POD 类
 extern "C" 的作用是让 C++ 编译器将 extern "C" 声明的代码当作 C 语言代码处理，可以避免 C++ 因符号修饰导致代码不能和C语言库中的符号进行链接的问题。
 
 # volatile
+
+# Dangling pointers and wild pointers 空悬指针和野指针
+- 指针变量未初始化
+- 指针被free后，没有置为NULL
+- 指针指向栈内存
+
+# share_ptr
+智能指针的线程安全性
+
+# vector 底层实现
+

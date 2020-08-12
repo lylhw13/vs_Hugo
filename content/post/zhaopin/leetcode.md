@@ -10,3 +10,25 @@ draft: true
 k = k ^ (k - 1);
 
 k & -k; //取最后一位的1
+
+test cases
+- expected input
+- empty input
+- malformed input
+- large input
+- null input
+- other edge cases
+
+
+tiny url
+design twitter
+
+mvc
+
+data flow
+
+贪心算法（又称贪婪算法）是指，在对问题求解时，总是做出在当前看来是最好的选择。也就是说，不从整体最优上加以考虑，他所做出的是在某种意义上的局部最优解。
+
+贪心算法不是对所有问题都能得到整体最优解，关键是贪心策略的选择，选择的贪心策略必须具备无后效性，即某个状态以前的过程不会影响以后的状态，只与当前状态有关。
+
+
