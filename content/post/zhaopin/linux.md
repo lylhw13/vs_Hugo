@@ -99,3 +99,87 @@ netstat -anp | grep 80
 2. 如果程序采用循环来对文件描述符执行尽可能多的I/O，而文件描述符又被置为可阻塞的，那么最终当没有更多的I/O执行时，I/O系统调用就会阻塞。基于这个原因，每个被检查的文件描述符通常都应该设置为非阻塞模式。
 
 
+# 五种IO模型？
+
+- 阻塞（blocking）
+- 非阻塞（non-blocking）
+- IO复用（IO multiplexing）
+- 信号驱动（signal-driven）
+- 异步（asynchronous）
+
+# pthread_detach和pthread_join的作用
+
+join两个作用：
+- 等待线程终止
+- 返回其终止状态
+
+函数 pthread_join() 等待由 thread标示的线程终止。如果线程已终止，pthread_join() 会立即返回。这种操作被称为连接（joining）。
+默认情况下，线程是可连接的（joinable），也就是说，当线程退出时，其他线程可以通过调用pthread_join() 获取其返回状态。
+若不关心线程的返回状态，只是希望系统在线程终止时能自动清理并移除之。
+一旦线程处于分离状态，就不能再使用pthread_join()来获取其状态，也无法使其重返“可连接”的状态。
+
+# 僵尸进程和孤儿进程
+
+- 孤儿进程：一个其父进程已终止的进程称为孤儿进程。孤儿进程将被init进程(进程号为1)所收养，并由init进程对它们完成状态收集工作。
+
+- 僵尸进程：一个进程使用fork创建子进程，如果在子进程退出之前，其父进程并没有调用wait或waitpid获取子进程的状态信息，那么子进程的进程描述符仍然保存在系统中。这种进程称之为僵尸进程。
+
+# linux下把进程/线程绑定到特定cpu核上运行
+
+- 进程
+    1. 在shell中将为进程指定CPU，使用taskset工具。
+    2. 使用`sched_setaffinity`系统调用将某个进程绑定到特定的CPU。
+```
+#define _GNU_SOURCE             /* See feature_test_macros(7) */
+#include <sched.h>
+
+int sched_setaffinity(pid_t pid, size_t cpusetsize, cpu_set_t *mask);
+
+int sched_getaffinity(pid_t pid, size_t cpusetsize, cpu_set_t *mask);
+```
+
+- 线程
+    使用`pthread_setaffinity_np`函数将指定线程绑定到特定的CPU运行。
+```
+#define _GNU_SOURCE             /* See feature_test_macros(7) */
+#include <pthread.h>
+
+int pthread_setaffinity_np(pthread_t thread, size_t cpusetsize, const cpu_set_t *cpuset);
+int pthread_getaffinity_np(pthread_t thread, size_t cpusetsize, cpu_set_t *cpuset);
+
+Compile and link with -pthread.
+```
+
+# linux 系统里，一个被打开的文件可以被另一个进程删除吗？
+
+linux是通过link的数量来控制文件删除，只有当一个文件不存在任何link的时候，这个文件才会被删除。
+
+而每个文件都会有2个link计数器i_count 和 i_nlink。i_count的意义是当前使用者的数量，也就是打开文件进程的个数。i_nlink的意义是介质连接的数量；或者可以理解为 i_count是内存引用计数器，i_nlink是硬盘引用计数器。再换句话说，当文件被某个进程引用时，i_count 就会增加；当创建文件的硬连接的时候，i_nlink 就会增加。
+
+对于 rm 而言，就是减少 i_nlink。这里就出现一个问题，如果一个文件正在被某个进程调用，而用户却执行 rm 操作把文件删除了，会出现什么结果呢？
+
+当用户执行 rm 操作后，ls 或者其他文件管理命令不再能够找到这个文件，但是进程却依然在继续正常执行，依然能够从文件中正确的读取内容。这是因为，rm 操作只是将 i_nlink 置为 0 了；由于文件被进程引用的缘故，i_count 不为 0，所以系统没有真正删除这个文件。
+
+简而言之：
+- 如果当前文件不存在任何link 且没有被进程打开，这个文件就会被删除，空间也会被重新利用。
+- 如果当前文件不存在任何link，但是仍然被某个进程打开，那么这个文件会被保留到最后一个文件描述符被关闭。
+
+
+# 缓存更新策略
+1. Cache Aside Pattern
+    失效：应用程序先从cache取数据，没有得到，则从数据库中取数据，成功后，放到缓存中。
+    命中：应用程序从cache中取数据，取到后返回。
+    更新：先把数据存到数据库中，成功后，再让缓存失效。
+
+2. Read/Write Through Pattern
+   从设计上看，Cache aside这个模式的缺点在于需要程序去维护两个不同的存储设备，（比如一个MySQL，一个Redis），硬编码的成本较大，而且容易出现编码失误，更好的方式是，提供特殊服务专门维护，将其与业务隔离开。
+   1. Read Through
+    Read Through 是在查询操作中更新缓存，也就是说，当缓存失效的时候（过期或LRU换出），Cache Aside是由调用方负责把数据加载入缓存，而Read Through则用缓存服务自己来加载，从而对应用方是透明的。
+   2. Write Through
+    Write Through 在更新数据时发生。当有数据更新的时候，如果没有命中缓存，直接更新数据库，然后返回。如果命中了缓存，则更新缓存，然后再由Cache自己更新数据库（这是一个同步操作）
+
+3. Write Behind Caching Pattern
+    俗称write back，在更新数据的时候，只更新缓存，不更新数据库，而我们的缓存会异步地批量更新数据库。这个设计的好处就是让数据的I/O操作飞快无比，因为异步（比如消息队列），write back还可以合并对同一个数据的多次操作，所以性能的提高是相当可观的。
+
+    但是这个设计的最大致命问题在于数据的不强一致性，极可能造成数据的丢失。假如使用redis作为缓存数据库，最致命的问题在于redis并不能保证绝对不丢失数据，也就是redis的持久化能力（两种持久化都无法保证数据绝对丢失）不足，redis一旦挂了，可能造成数据丢失且无法恢复。
+

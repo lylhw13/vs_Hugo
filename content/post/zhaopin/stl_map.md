@@ -48,3 +48,4 @@ const UPInt UPInt::operator++(int){
 }
 ```
 
+- 一个unique_ptr怎么赋值给另一个unique_ptr对象？（std::move）
