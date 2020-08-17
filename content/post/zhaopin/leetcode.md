@@ -36,4 +36,33 @@ data flow
 lru
 lfu
 
+# 并查集
+```c++
+class UnionFind{
+private:
+    vector<int> root;
+public:
+    UnionFind(int N):root(N){
+        for(int i=0; i< N; ++i) {
+            root[i] = i;
+        }
+    }
+
+    int find(int p) {
+        while(p != root[p]) {
+            //root[p] = root[root[p]];    //路径压缩
+            p = root[p];
+        }
+        return root[p];
+    }
+    bool isConnect(int p, int q) {
+        return find(p) == find(q);
+    }
+    void unionTwo(int p, int q) {
+        int rootp = find(p);
+        int rootq = find(q);
+        root[rootp] = rootq;
+    }
+};
+```
 
