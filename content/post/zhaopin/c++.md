@@ -153,6 +153,38 @@ C++引入class，在保持和C语言兼容的同时，又添加两种新用法
 
 如果是const传递的c++对象，const_castconst_cast后改写没什么问题。
 
+# 智能指针线程安全
+
+unique_ptr 和 shared_ptr 都不是线程安全的。
+
+shared_ptr 有两个数据成员，因此读写操作不能原子化。 shared_ptr 的线程安全级别和内建类型、标准库容器、std::string 一样。
+1. 一个shared_ptr实例被多个线程同时读取
+2. 不同的shared_ptr的实例被不同的线程同时写入
+3. 任何其他的情况都会导致未定义的行为。
+   
+可以使用 `std::atomic<std::shared_ptr>>`来达到线程安全的目的。
+
+All C/C++ Operations Are Presumed Non-Atomic
+
+# 仿函数
+
+ 仿函数(functor)，就是使一个类的使用看上去象一个函数。其实现就是类中实现一个operator()，这个类就有了类似函数的行为，就是一个仿函数类了。
+```c++
+struct add_x {
+        add_x(int val) : x(val) {}  // Constructor
+        int operator()(int y) const { return x + y; }
+
+    private:
+        int x;
+};
+// Now you can use it like this:
+add_x add42(42); // create an instance of the functor class
+int i = add42(8); // and "call" it
+assert(i == 50); // and it added 42 to its argument
+```
+仿函数就像闭包一样，可以包含状态。
+
+
 # 待补充
 # iterator类型
 单向，双向，任意
@@ -163,7 +195,20 @@ C++引入class，在保持和C语言兼容的同时，又添加两种新用法
 - 继承方法接口，以及默认的实现：虚函数。
 - 继承方法接口，以及强制的实现：普通函数。
 
-# 仿函数
 
 # 协程
 没有太多接触，个人理解是更轻量级的线程，不需要内核参与进行调度。
+
+# 统计房间人数多少
+编程珠玑里面有算法
+
+# RPC
+
+# 简历介绍
+
+具备扎实的计算机、网络等方面的基础知识
+有扎实的c/c++ 编程能力，有良好的数据结构和算法基础；
+有Windows或mac客户端的开发经验；有平台相关的调试/调优经验；
+对网络安全、信息安全等有一定了解
+熟悉TCP/IP协议，熟练掌握Linux网络编程和多线程编程技术；
+
