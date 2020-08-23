@@ -7,7 +7,7 @@ draft: true
 
 
 
-TCP 协议如何保证可靠传输
+# TCP 协议如何保证可靠传输
 一、综述
 
 1 确认和重传：接收方收到报文就会确认，发送方发送一段时间后没有收到确认就重传。
@@ -315,7 +315,52 @@ Linux 下怎样开启 syncookies 功能呢？修改 tcp_syncookies 参数即可�
 # tcp提到了流量控制和拥塞控制，说说区别？
 流量控制是一对一，防止发送方发的太快接收方来不及接受；拥塞控制是全局，防止过多数据注入网络导致网络拥塞。
 
-# 滑动窗口知道吧，讲讲滑动窗口？拥塞控制的四个算法知道吧，讲讲四个算法？
 
-# 调页算法有哪些呢？
-lru，lfu，fifo，理想化的opt。
+
+
+# http 
+http 在应用层
+http 无状态，现在默认长连接
+这个无状态，即每一次请求之间是没有联系的，都是独立的，因此服务器不知道请求两次之间是否是同一个用户。
+无状态就意味着服务端可以根据需要将请求分发到集群的任何一个节点，对缓存、负载均衡有明显的好处。
+
+首先对于标准的HTTP来说，是无状态的。而使用Cookie和Session的HTTP可以被认为是有状态的。
+
+# 浏览器中输入url到返回页面的全过程
+1. DNS解析
+2. TCP连接，三次握手
+3. 发送HTTP请求
+4. 服务端处理请求并返回HTTP报文
+5. 浏览器解析渲染页面
+
+# HTTP
+请求头
+```http
+GET /mix/76.html?name=kelvin&password=123456 HTTP/1.1
+Host: www.fishbay.cn
+Referer: https://www.jianshu.com/p/8fe93a14754c
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7,en-US;q=0.6
+Cache-Control: max-age=0
+Connection: keep-alive
+```
+
+响应头
+```http
+# 状态行
+HTTP/1.1 200 OK
+# 消息报头
+Server: nginx
+Date: Mon, 20 Feb 2017 09:13:59 GMT
+Cache-Control: no-store
+Expires: Thu, 01 Jan 1970 00:00:00 GMT
+content-length: 736
+content-encoding: gzip
+content-type: text/plain;charset=UTF-8
+# 空行
+
+# 响应正文
+{"code":200,"notice":0,"follow":0,"forward":0,"msg":0,"comment":0,"pushMsg":null,"friend":{"snsCount":0,"count":0,"celebrityCount":0},"lastPrivateMsg":null,"event":0,"newProgramCount":0,"createDJRadioCount":0,"newTheme":true}
+```

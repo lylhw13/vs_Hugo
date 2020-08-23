@@ -40,9 +40,32 @@ chmod +x shadowsocks-all.sh
 
 # Client 客户端
 
+## ubuntu
+```sh
+# ubuntu下载客户端
+sudo apt install shadowsocks-libev
+
+# 安装 simple-obfs
+sudo apt install simple-obfs
+
+# 修改配置
+vim /etc/shadowsocks-libev/config-obfs.json
+
+# 启动服务
+sudo systemctl start shadowsocks-libev-local@config-obfs
+sudo systemctl enable shadowsocks-libev-local@config-obfs
+```
+
+firefox setting
+
+Preference > Network Settings > Manual proxy configuration
+- 只设置 socks host，其他全部清空
+- 勾选 Proxy DNS when using Socks v5
+
+
 ## windows 添加混淆
 
-- 从 [shadowssocks/simple-obfs](https://github.com/shadowsocks/simple-obfs/releases) 下载`obfs-local.zip`
+- 从 [shadowsocks/simple-obfs](https://github.com/shadowsocks/simple-obfs/releases) 下载`obfs-local.zip`
 - 解压出 libwinpthread-1.dll, obfs-local.exe
 - 拷贝至 shadowsocks 的文件夹
 - 编辑 server 参数如下：
