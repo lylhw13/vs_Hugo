@@ -17,3 +17,5 @@ lru，lfu，fifo，理想化的opt。
 MySQL 数据库怎么做高可用
 
 C++ private继承下的protect函数具体会怎么样
+
+银行家算法了解吗

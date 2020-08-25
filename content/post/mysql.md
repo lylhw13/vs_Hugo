@@ -65,6 +65,8 @@ show tables;            # 列出所有的表
 
 create database NAME;   # 创建一个数据库
 drop database NAME;     # 删除一个数据库
+
+show processlist;       # 显示进程列表
 ```
 http://blog.51yip.com/mysql/1005.html
 
