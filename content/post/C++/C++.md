@@ -31,11 +31,16 @@ double stod(const stirng& str, size_t* idx=0);
 
 * 输出：
 
-```C++
+```C
 // format
 // %[flags][width][.precision][length]specifier
 
 printf("%*.*g", width, precision, d);
+```
+
+```c++
+#include <iomanip>
+cout << setiosflags(ios::fixed) << setprecision(2);
 ```
 
 通过调整`precision`可以得到不同的精度。
