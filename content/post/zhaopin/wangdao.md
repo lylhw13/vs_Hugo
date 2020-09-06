@@ -158,3 +158,9 @@ netstat
 2，临界区是非内核对象，只在用户态进行锁操作，速度快；互斥体是内核对象，在核心态进行锁操作，速度慢。
 3，临界区和互斥体在windows平台下可用，linux下只用互斥体可用。
 
+# vector可以存引用吗
+
+vector 不可以存引用：引用不支持一般意义上的赋值操作
+- references are not objects 引用不是对象
+- can't rebind a reference, references must be initialized 引用不能赋值，只能初始化
+
