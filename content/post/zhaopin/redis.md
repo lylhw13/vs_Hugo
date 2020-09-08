@@ -23,7 +23,7 @@ hashmap 是怎样实现的？
 Redis 采用惰性删除和定期删除两种策略。
 
 # redis内存回收
-Redis中采用两种算法进行内存回收，引用计数算法以及LRU（Least Re）算法
+Redis中采用两种算法进行内存回收，引用计数算法以及LRU（least recently used）算法
 
 # redis 主从同步
 1. 从服务器向主服务器发送SYNC命令
