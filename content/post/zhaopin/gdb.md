@@ -75,7 +75,7 @@ set (expression)	                    // Works like set variable
 ## Misc Commands
 ```gdb
 RETURN	        // 单击RETURN 键，重复执行上一个命令
-backtrace	    // Show the current stack
+backtrace	    // Show the current stack 查看栈信息
 bt	            // Alias for backtrace
 attach pid	    // Attach to an already-running process by its PID
 info registers	    // Dump integer registers to screen

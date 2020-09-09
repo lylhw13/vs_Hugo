@@ -141,7 +141,7 @@ C++引入class，在保持和C语言兼容的同时，又添加两种新用法
 
 至于const char* x="abcde";为什么VC++有保护，那是因为"abcde"被编译在了一个readonly的memory page上面，跟x声明成const char*是没关系的。如果这时候使用const_cast进行改写，程序会崩溃。
 
-如果是const传递的c++对象，const_castconst_cast后改写没什么问题。
+如果是const传递的c++对象，const_cast后改写没什么问题。
 
 # 智能指针线程安全
 
