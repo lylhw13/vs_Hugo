@@ -10,10 +10,9 @@ draft: true
 不稳定排序：
 选择排序，希尔排序，快速排序，堆排序
 
-
+# 容器里面只有 vector 和 deque 支持 sort 操作。
 
 # 序列式容器 sequence containers
-
 vector
 插入和删除操作可能造成记忆体重新配置，导致原有的迭代器全部失效。
 
