@@ -56,7 +56,8 @@ step	    // Step into the function on this line, if possible
 stepi	    // Step a single assembly instruction
 continue	// Keep running from here
 CTRL-C	    // Stop running, wherever you are
-finish	    // Run until the end of the current function
+finish	    // 执行到当前函数结尾
+unit        //执行程序，直到到达当前循环体外的下一行源代码
 advance location	// Advance to a location, line number, or file (e.g. "somefunction", "5", or "hello.c:23")
 jump location	    // Just like continue, except jump to a particular location first.
 ```
@@ -68,8 +69,8 @@ info display	        // Show a list of expressions currently being displayed and
 undisplay num	        // Stop showing an expression identified by its number (see info display)
 print expression	    // Print the value of a variable or expression
 printf formatstr expressionlist	        // Do some formatted output with printf() e.g. printf "i = %d, p = %s\n", i, p
-set variable expression	                // Set a variable to value, e.g. set variable x=20
-set (expression)	                    // Works like set variable
+set variable expression	                // 设置变量，比如 set variable x=20
+set (expression)	                    // 设置变量，同上
 ```
 
 ## Misc Commands
@@ -80,4 +81,41 @@ bt	            // Alias for backtrace
 attach pid	    // Attach to an already-running process by its PID
 info registers	    // Dump integer registers to screen
 info all-registers	// Dump all registers to screen
+info locals         // 可以得到当前栈帧中所有局部变量的值列表
+
+```
+
+```gdb
+break function
+break line_number
+break filename:line_number
+break filename:function
+
+break break_args if (condition)
+```
+
+clear
+            Delete any breakpoints at the next instruction to be executed in the selected stack frame (see section Selecting a frame). When the innermost frame is selected, this is a good way to delete a breakpoint where your program just stopped.
+clear function
+clear filename:function
+            //Delete any breakpoints set at entry to the function function.
+clear linenum
+clear filename:linenum
+            //Delete any breakpoints set at or within the code of the specified line.
+delete [breakpoints] [range...]
+            //Delete the breakpoints, watchpoints, or catchpoints of the breakpoint ranges specified as arguments. If no argument is specified, delete all breakpoints (GDB asks confirmation, unless you have set confirm off). You can abbreviate this command as d.
+
+```gdb
+int x[25];
+(gdb) p x       // 可以输出整个数组
+
+int *x;
+x = (int*) malloc(25 * sizeof(int));
+(gdb) p x       // 打印数组地址
+(gdb) p *x      // 打印第一个元素
+
+//可以使用下面两种方法
+(gdb) p *x@25       //人工数组 (artificial array)
+
+(gdb) p (int [25]) *x       // 强制类型转换
 ```

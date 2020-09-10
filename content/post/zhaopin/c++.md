@@ -297,3 +297,18 @@ volatile：
 # c++ 构造函数的调用时机
 - 如果是全局对象，则在 main() 函数之前调用
 
+crt: C runtime
+
+crt0 是连接到C程序上的一组执行启动例程，它进行在调用这个程序的主函数之前所需要的任何初始化工作。它一般的都采用叫做crt0.o的目标文件形式，经常采用汇编语言编写，链接器自动的将它包括入它所建造的所有可执行文件中。
+
+crt1 是在 crt0 的基础上支持构造函数和析构函数（这些函数在main之前，exit 之后调用）。这种情况下，main就像一个普通的函数调用。
+
+crt0/crt1 都是用来实现在调用main() 之前的一些初始化工作（比如，初始化栈）。
+
+Both crt0/crt1 do the same thing, basically do what is needed before calling main() (like initializing stack, setting irqs, etc.). You should link with one or the other but not both. They are not really libraries but really inline assembly code.
+
+As far as I understand, crt comes in two "flavors"
+
+crt1 is used on systems that support constructors and destructors (functions called before and after main and exit). In this case main is treated like a normal function call.
+crt0 is used on systems that do not support constructors/destructors.
+
