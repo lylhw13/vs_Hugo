@@ -175,13 +175,6 @@ assert(i == 50); // and it added 42 to its argument
 仿函数就像闭包一样，可以包含状态。
 
 
-# iterator类型
-1. input iterator 只读
-2. output iterator 唯写
-3. forward iterator 
-4. bidirectional iterator
-5. random access iterator
-
 # 接口继承 C++是怎么实现接口的
 
 - 不继承实现，只继承方法接口：纯虚函数。
