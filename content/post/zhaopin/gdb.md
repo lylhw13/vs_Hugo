@@ -57,6 +57,11 @@ g++: GNU C++ Compiler
 -w          // 不显示任何警告信息 (不建议), inhibit all waring messages
 
 -std=       // 决定使用版本，只支持 c 或 c++，比如 'c11', 'c++11'
+
+-Wextra
+       This enables some extra warning flags that are not enabled by -Wall.
+       (This option used to be called -W.  The older name is still supported, but
+       the newer name is more descriptive.)
 ```
 
 
@@ -87,7 +92,8 @@ delete num	        // Delete a breakpoint or watchpoint by number
 next	    // 执行下一步
 step	    // Step program until it reaches a different source line
 stepi	    // 前进一条指令 Step a single assembly instruction
-continue	// 从这里继续执行
+continue	// 继续执行
+continue 次数   // 指定忽略断点的次数
 CTRL-C	    // 停止运行
 finish	    // 执行到当前函数结尾
 unit        //执行程序，直到到达当前循环体外的下一行源代码
@@ -102,7 +108,10 @@ info display	        // Show a list of expressions currently being displayed and
 undisplay num	        // Stop showing an expression identified by its number (see info display)
 print expression	    // 打印出变量值
 printf formatstr expressionlist	        // Do some formatted output with printf() e.g. printf "i = %d, p = %s\n", i, p
+
+
 set variable expression	                // 设置变量，比如 set variable x=20
+set variable 变量 = 表达式
 set (expression)	                    // 设置变量，同上
 ```
 
@@ -112,10 +121,15 @@ RETURN	        // 单击RETURN 键，重复执行上一个命令
 backtrace	    // 查看栈信息，print backtarce of all stack frames, or innermost COUNT frames
 bt	            // Alias for backtrace
 attach pid	    // Attach to an already-running process by its PID
-info registers	    // 罗列出整型寄存器的内容
-info all-registers	// 罗列出所有寄存器的内容
-info locals         // 可以得到当前栈帧中所有局部变量的值列表
+info registers	    // 罗列出 整型 寄存器的内容
+info reg            // 同上
 
+info all-reg        // 列出所有寄存器的内容
+
+p $eax              // 显示寄存器的内容
+
+
+info locals         // 可以得到当前栈帧中所有局部变量的值列表
 ```
 
 ```gdb
@@ -125,6 +139,22 @@ break filename:line_number
 break filename:function
 
 break break_args if (condition)
+```
+
+```gdb
+backtrace
+bt          # 显示所有栈帧
+
+backtrace N
+bt N        # 显示开头的N个栈帧
+
+backtrace -N
+bt -N       # 显示最后的N个栈帧
+
+backtrace full
+bt full     # 不仅显示backtrace，还显示局部变量，   可以添加 N 选择栈帧
+bt full N
+bt full -N
 ```
 
 clear
@@ -152,3 +182,64 @@ x = (int*) malloc(25 * sizeof(int));
 
 (gdb) p (int [25]) *x       // 强制类型转换
 ```
+
+
+Linux 不允许生成 core dump 文件。下面的命令显示，Linux 允许的最大 core dump 文件大小为 0：
+```sh
+$ ulimit -a | grep core
+core file size          (blocks, -c) 0
+```
+可以通过下面设置，允许 Linux 生成 core dump 文件：
+```sh
+# 以下命令仅对当前shell有效
+$ ulimit -c n           // n 是核心文件的最大大小，以千字节为单位。超过 nKB 的核心文件都不会被编写。
+$ ulimit -c unlimited
+
+# 对所有shell有效
+# 在 ~/.bashrc 的最后加入： 
+ulimit -c unlimited
+```
+设置完成后再次进行查询，结果如下
+```sh
+$ ulimit -a | grep core
+core file size          (blocks, -c) unlimited
+```
+
+# gdb 查看 core 文件
+
+```gdb
+gdb [exec_file] [core_file]
+gdb -c [core_file] [exec_file]
+```
+
+
+# 软件调试的艺术
+
+段错误涉及访问不具备足够权限的内存
+地址错误是提供给处理器的是无效地址。
+在很多架构上，要求访问32位量的机器指令要求字对齐，即这个量的内存地址必须是4的倍数。导致试图在奇数号地址上访问具有4字节的数的指针错误可能会引起总线错误。
+
+在调试会话期间，修改代码时永远不要退出GDB，这样就不必费时机来启动，可以保留我们的断点等。
+
+
+# debug hacks 中文版
+
+程序指针可以写为 $pc, 也可写为 $eip, 两者都可以显示。这是因为Intel IA-32 架构中的程序指针名为 eip
+p $pc
+p $eip
+
+用x命令可以显示内存的内容。x 这个名字的由来是 eXamining
+x/格式 地址
+x $pc
+x/i $pc
+
+反汇编指令 disassemble, 简写为 disas
+```
+disassemble                 # 反汇编整个函数
+disassemble 程序计数器          # 反汇编程序计数器所在函数的整个函数
+disassemble 开始地址 结束地址       # 反汇编从开始地址到结束地址之前的部分
+```
+
+
+attach pid
+将进程 attach 到进程ID为pid的进程上
