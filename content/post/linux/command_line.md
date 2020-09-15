@@ -318,12 +318,14 @@ Table 17-6: Predefined find Actions p249
 
 # chapter 18 – Archiving and Backup
 
+- tar – Tape archiving utility 磁带存档，原本是一个归档打包工具，将多个文件合并成一个文件。能自动调用解压缩功能
+  
 - gzip – Compress or expand files
 - bzip2 – A block sorting file compressor
-- tar – Tape archiving utility
 - zip – Package and compress files
 - rsync – Remote file and directory synchronization
 
+tar代表未压缩的tar文件。已压缩的tar文件则附加数据压缩格式的扩展名，如经过gzip压缩后的tar文件，扩展名为".tar.gz"。
 Table 18-1: gzip Options p260
 
 tar. If the filename - is specified, it is taken to mean standard input or output, as needed. (By the way, this convention of using - to represent standard input/output is used by a number of other programs, too). 
