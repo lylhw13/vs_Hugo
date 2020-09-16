@@ -47,3 +47,20 @@ BX 默认段是 DS
 
 (...) 表示一个寄存器或一个内存单元中的内容
 [...] 表示一个内存单元的偏移地址
+
+# NASM
+
+- Put the system call number in the EAX register.
+- Store the arguments to the system call in the registers EBX, ECX, etc.
+- Call the relevant interrupt (80h).
+- The result is usually returned in the EAX register.
+
+There are six registers that store the arguments of the system call used. These are the EBX, ECX, EDX, ESI, EDI, and EBP. These registers take the consecutive arguments, starting with the EBX register. If there are more than six arguments, then the memory location of the first argument is stored in the EBX register.
+
+# logical instructions
+
+The first operand in all the cases could be either in register or in memory. The second operand could be either in register/memory or an immediate (constant) value. However, memory-to-memory operations are not possible. These instructions compare or match bits of the operands and set the CF, OF, PF, SF and ZF flags.
+
+CMP destination, source
+
+$ points to the byte after the last character of the string variable msg.

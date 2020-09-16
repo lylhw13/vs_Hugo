@@ -11,3 +11,6 @@ free - Display amount of free and used memory in the system
 getconf PAGESIZE        // 区分大小写
 getconf -a              // 罗列出所有系统设置变量
 ```
+
+# xargs 
+xargs命令的作用，是将标准输入转为命令行参数。

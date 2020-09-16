@@ -45,6 +45,8 @@ g++: GNU C++ Compiler
 -g          // 在目标文件中添加调试信息，用于 基于gdb的调试器
 -o          // 指定生成文件的名字
 
+-Og           // Optimize debugging experience. ‘-Og’ offering a reasonable level of opti-mization while maintaining fast compilation and a good debugging experience.          
+
 -S          // 生成汇编文件
 
 -I<dir>     // 指定头文件路径, include-paths
