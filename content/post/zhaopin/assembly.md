@@ -48,6 +48,11 @@ BX 默认段是 DS
 (...) 表示一个寄存器或一个内存单元中的内容
 [...] 表示一个内存单元的偏移地址
 
+# 参数传递的寄存器顺序
+如果一个函数有大于6个整型参数，超出6个的部分就要通过栈来传递
+
+di si dx cx r8w r9w
+
 # NASM
 
 - Put the system call number in the EAX register.
@@ -64,3 +69,17 @@ The first operand in all the cases could be either in register or in memory. The
 CMP destination, source
 
 $ points to the byte after the last character of the string variable msg.
+
+
+# linux 生成汇编方法
+- 直接 gcc 生成
+```sh
+gcc -Og -S main.c
+```
+
+- 使用 gcc 生成连接前的目标文件，使用 objdump 进行反汇编
+  ```sh
+  gcc -Og -c main.c
+
+  objdump -d main.o
+  ```

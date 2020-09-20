@@ -33,6 +33,8 @@ set expandtab "Use spaces instead of tabs
 set shiftwidth=4 "Number of auto-indent spaces 
 filetype plugin indent on
 syntax on
+
+set tabstop=4
 ```
 
 # 退出插入模式

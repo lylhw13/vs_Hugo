@@ -14,6 +14,18 @@ hashmap 是怎样实现的？
 让你设计一个限流的系统怎么做？ 令牌桶
 让你设计一个延时任务系统怎么做 说了两个方案，一个是使用 redis 的 ZSET 来实现，考虑分片来抗高并发，使用 redis 的持久化来实现落地，使用 redis 的哨兵实现故障转移。 一个是使用时间轮的方法。
 
+# redis 数据结构
+- string 
+  - int, embstr, raw
+- List
+  - ziplist, linkerlist
+- Hash
+  - ziplist, HT
+- Set
+  - intset, HT
+- Zset
+  - ziplist, skiptlist
+
 # redis 过期键删除策略
 有三种基本的删除策略：
 - 定时删除：设置定时器，让定时器在键过期时间来临时，立即执行对键对删除操作
