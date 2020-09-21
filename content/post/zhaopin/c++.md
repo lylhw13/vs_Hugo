@@ -203,58 +203,7 @@ little定律：
 
 有大型软件开发维护经验
 
-# 静态库与动态库
-linux 静态库 .a 动态库 .so
-windows 静态库 .lib 动态库 .dll
 
-hello.c
-1. 预处理器，cpp，导入头文件修改源程序 hello.i
-2. 编译器，gcc, g++，生成汇编程序（文本）hello.s
-3. 汇编器，as，生成可重定位的目标程序（二进制）
-4. 链接器，ld，可执行目标程序（二进制）
-
-创建静态库
-```sh
-gcc -c hello.c -o hello.o
-ar rcs libhello.a hello.o
-```
--c 表示创建一个中间文件，而不是可执行文件
-
-This creates the static library. 
-- r means to insert with replacement
-- c means to create a new archive
--  s means to write an index. 
-
-链接静态库：
-- 标志 -L 表示要连接的库所在目录
-- 标志 -l 指定链接时需要的动态库
-
-```sh
-gcc [options] [source files] [object files] [-Ldir] -llibname [-o outfile]
-
-# 当前目录
-gcc main.c -L. -lhello -o main
-
-gcc main.c -L. -l:libhello.a -o main
-```
-注意：默认 libname，是以 lib 开头，.a 结尾，所以 -l 后面只写 libname 中间的那一部分。或者 -l：后面写全名。
-
-创建动态库
-```sh
-gcc -c -fPIC hello.c -o hello.o
-gcc -shared hello.o -o hello.so
-
-# 可以合成一步
-gcc -fPIC -shared hello.c -o hello.so
-```
-PIC = position independent code 代表与平台无关
-
-动态库的链接方式和静态库一样，但是动态库会在执行的时候，默认去 /usr/lib 去加载所需要的库。解决办法是：
-1. 将库移动到 /usr/lib
-2. 修改环境变量
-```sh
-export LD_LIBRARY_PATH=$(pwd)
-```
 
 
 # struct中长度为零的数组

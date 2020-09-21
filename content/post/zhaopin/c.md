@@ -57,6 +57,26 @@ malloc/free
     cout << (un.a == 1) << endl;
 ```
 
+# qsort
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+int cmp(const void*a, const void*b) {
+    return *(int*)a - *(int*)b;     // 注意先转换为整型，再进行加减或比较运算
+}
+
+int main(){
+    int num[3]= {3,1,2};
+    qsort(num, 3, sizeof(int), cmp);
+
+    for(int i=0; i< 3; ++i) {
+        printf("%d\n", num[i]);
+    }
+    return 0;
+}
+```
 
 
 
