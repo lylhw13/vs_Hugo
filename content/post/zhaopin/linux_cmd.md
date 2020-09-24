@@ -14,3 +14,13 @@ getconf -a              // 罗列出所有系统设置变量
 
 # xargs 
 xargs命令的作用，是将标准输入转为命令行参数。
+
+# ubuntu 下面切换到管理员身份
+```sh
+sudo -i
+```
+
+# nslookup 查询调试 DNS
+nslookup - query Internet name servers interactively
+
+

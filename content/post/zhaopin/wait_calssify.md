@@ -63,3 +63,14 @@ class的内存模型。
 
 能够阅读英文技术书籍
 
+工作遇到的最难的问题
+
+I am liu. I graduated from xianjiaotong university with a master degree in 2016. I have over four years of experience in program developing. My main job is to develop and maintain the MEMS CAE software. I am experienced C/C++ and familiar with linux and tcp/ip.
+
+Half of my work is to solve funciton of physics and the left time is to develop 
+
+hardworking self-motivated team player
+
+power engineering
+
+Thank you for giving me this chance.
