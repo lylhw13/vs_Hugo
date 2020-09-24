@@ -184,6 +184,9 @@ p - paste line from buffer
 在 Windows 版本的 Vim 中，键组合 ctrl-v通常被映射为文本粘贴，所以 Window 版的 Vim 的纵向编辑模式由 ctrl-q启动。
 ### 列编辑状态下插入
 shift - i
+编辑结束按ESC，即可看到编辑效果
+### 列编辑状态下删除
+按 d 即可
 
 
 ```vim
