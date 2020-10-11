@@ -65,15 +65,52 @@ class的内存模型。
 
 工作遇到的最难的问题
 
-I am liu. I graduated from xianjiaotong university with a master degree in 2016. I have over four years of experience in program developing. My main job is to develop and maintain the MEMS CAE software. I am experienced C/C++ and familiar with linux and tcp/ip.
+自我介绍
+My name is liu. 
+I graduated from xianjiaotong university with a master degree in 2016. 
+I have over four years of experience in program developing. My main job is to develop and maintain the MEMS CAE software. 
+I am experienced C/C++ and familiar with linux and tcp/ip protocol.
 
-Half of my work is to solve funciton of physics and the left time is to develop 
+For me, my biggest advantage is cooperationg with others and I think I'm a good team player and I'm a person of great honesty to ohters. Also I am able to work under great pressure. I hope you can give me the chance.
 
-hardworking self-motivated team player
+工作内容
+My main job is to develop and maintain the MEMS CAE software suit. The software is used to do mulit-physics analysis. The software by solving physics equations, like Newton's Law, to simulate the deformation of the object which at some situation, for example force, electric and so on. The software can reduce the time and money for the progress. Half of my work is to solve funciton of physics and the left time is to develop.
 
 power engineering
 
-Thank you for giving me this chance.
+- why are you interested in our company?
+    First of all, thank you for this interview opportunity. I am so honored to be here.
+
+    Your company has an impressive reputation.
+
+- Why are you qualified for this job?
+- What makes you a good fit for the company?
+
+Strengths:
+- I like to take initiative. 主动性很强
+- I like being proactive. 主动性很强
+- I am self-motivated.
+
+- I am open and willing to learn.
+- I am hard working.
+
+- I am a strong team player.
+- I am very team-oriented.
+
+- I am trustworthy
+- I am reliable
+- I have a strong sense of responsibility
+
+
+Weaknesses:
+
+- Why do you move around so much?
+I wanted to acquire as much knowledge as possible.
+
+- Do you have any question for us?
+Can you tell me what kind of projects that I will be involved if I got an offer on this job?
+Will there be any in-hours training from the company?
+
 
 工作中，通过物理分析，求解数学方程，使用python进行快速原型，最后C/C++代码落地。
 
