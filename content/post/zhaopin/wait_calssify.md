@@ -76,6 +76,10 @@ For me, my biggest advantage is cooperationg with others and I think I'm a good 
 工作内容
 My main job is to develop and maintain the MEMS CAE software suit. The software is used to do mulit-physics analysis. The software by solving physics equations, like Newton's Law, to simulate the deformation of the object which at some situation, for example force, electric and so on. The software can reduce the time and money for the progress. Half of my work is to solve funciton of physics and the left time is to develop.
 
+the main market for our products is japan and us.
+
+so our email and document is written in english.
+
 power engineering
 
 - why are you interested in our company?

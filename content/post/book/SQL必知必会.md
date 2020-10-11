@@ -353,6 +353,8 @@ AND c2.cust_contact = 'Jim Jones';
 - 外联结
 许多联结将一个表中的行与另一个表中的行相关联，但有时候需要包含没有关联行的那些行。
 在使用 OUTER JOIN 语法时，必须使用 RIGHT 或 LEFT 关键字指定包括其所有行的表(RIGHT 指出的是 OUTER JOIN 右边的表，而 LEFT 指出的是 OUTER JOIN 左边的表)。
+left 包括左边没有关联行的行
+right 包括右边没有关联行的行
 ```SQL
 SELECT Customers.cust_id, Orders.order_num
 FROM Customers LEFT OUTER JOIN Orders

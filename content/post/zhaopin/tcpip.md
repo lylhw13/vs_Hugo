@@ -12,6 +12,9 @@ draft: true
 4. 流量控制
 5. 拥塞控制
 
+# tcp提到了流量控制和拥塞控制，说说区别？
+流量控制是一对一，防止发送方发的太快接收方来不及接受；拥塞控制是全局，防止过多数据注入网络导致网络拥塞。
+
 拥塞控制和流量控制的区别：
 - `拥塞控制`：拥塞控制是作用于网络的，它是防止过多的数据注入到网络中，避免出现网络负载过大的情况；常用的方法就是：1 慢开始、拥塞避免  2 快重传、快恢复。
 - `流量控制`：流量控制是作用于接收者的，它是控制发送者的发送速度从而使接收者来得及接收，防止分组丢失的。
@@ -283,8 +286,7 @@ Linux 下怎样开启 syncookies 功能呢？修改 tcp_syncookies 参数即可�
 
 # TCP四次挥手,服务端等不来ACK会做啥
 
-# tcp提到了流量控制和拥塞控制，说说区别？
-流量控制是一对一，防止发送方发的太快接收方来不及接受；拥塞控制是全局，防止过多数据注入网络导致网络拥塞。
+
 
 
 
@@ -335,3 +337,7 @@ content-type: text/plain;charset=UTF-8
 # 响应正文
 {"code":200,"notice":0,"follow":0,"forward":0,"msg":0,"comment":0,"pushMsg":null,"friend":{"snsCount":0,"count":0,"celebrityCount":0},"lastPrivateMsg":null,"event":0,"newProgramCount":0,"createDJRadioCount":0,"newTheme":true}
 ```
+
+# tcp/ip 边界
+- 固定消息尺寸
+- 使用消息标记

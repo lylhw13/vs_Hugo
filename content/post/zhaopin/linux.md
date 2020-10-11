@@ -233,13 +233,11 @@ Linux进程的4GB地址空间，3G-4G部分大家是共享的，是内核态的�
 5. 用户级线程的程序实体是运行在用户态下的程序，而内核支持线程的程序实体则是可以运行在任何状态下的程序。
 
 # 通用调度算法
-
-1.  SCHED_OTHER：分时调度（time-sharing scheduling）策略，它是Linux线程默认的调度策略。SCHED_OTHER策略的静态优先级总是为0，对于该策略列表上的线 程，调度器是基于动态优先级（dynamic priority）来调度的，动态优先级是跟nice中相关(nice值可以由接口nice, setpriority,sched_setattr来设置)，该值会随着线程的运行时间而动态改变，以确保所有具有SCHED_OTHER策略的线程公平运行。
+1.  SCHED_OTHER：分时调度（time-sharing scheduling）策略，它是Linux线程默认的调度策略。SCHED_OTHER策略的静态优先级总是为0，对于该策略列表上的线程，调度器是基于动态优先级（dynamic priority）来调度的，动态优先级是跟nice中相关(nice值可以由接口nice, setpriority, sched_setattr来设置)，该值会随着线程的运行时间而动态改变，以确保所有具有SCHED_OTHER策略的线程公平运行。
 2.  SCHED_FIFO：先入先出调度策略（First in-first out scheduling）。
 3.  SCHED_RR：时间片轮转调度(Round-robin scheduling)。
 
 # 一个进程崩溃会不会影响其他进程，线程呢?
-
 线程有自己的 stack，但是没有单独的 heap，也没有单独的 address space。
 只有进程有自己的 address space，而这个 space 中经过合法申请的部分叫做 process space。Process space 之外的地址都是非法地址。当一个线程向非法地址读取或者写入，无法确认这个操作是否会影响同一进程中的其它线程，所以只能是整个进程一起崩溃。
 
