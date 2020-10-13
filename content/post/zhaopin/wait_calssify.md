@@ -66,15 +66,22 @@ class的内存模型。
 工作遇到的最难的问题
 
 自我介绍
+First of all, thank you for this interview opportunity. I am so honored to be here.
 My name is liu. 
 I graduated from xianjiaotong university with a master degree in 2016. 
-I have over four years of experience in program developing. My main job is to develop and maintain the MEMS CAE software. 
+I have been working at JiangSu Intellisense Company for 4 years. My main job is to develop and maintain the MEMS CAE software. I have over four years of experience in program developing. 
 I am experienced C/C++ and familiar with linux and tcp/ip protocol.
+
+I am reliable and hark-working. Also I am open and willing to learn.
+I hope you can give me the chance.
 
 For me, my biggest advantage is cooperationg with others and I think I'm a good team player and I'm a person of great honesty to ohters. Also I am able to work under great pressure. I hope you can give me the chance.
 
+I'm the type of person if you ask me a question, and I don't know the answer I'm gonna tell you that I don't know. But I bet you what.
+I know how to find the answer, and I will find the answer.
+
 工作内容
-My main job is to develop and maintain the MEMS CAE software suit. The software is used to do mulit-physics analysis. The software by solving physics equations, like Newton's Law, to simulate the deformation of the object which at some situation, for example force, electric and so on. The software can reduce the time and money for the progress. Half of my work is to solve funciton of physics and the left time is to develop.
+My main job is to develop and maintain the MEMS CAE software suit. The software is used to do mulit-physics analysis. The software by solving physics equations, like Newton's Law, to simulate the deformation of the object which at some situation, for example force, electric and so on. The software can reduce the time and money for the progress. So my work mainly consist of two parts: solve function of physics and use coding to accomplish the idea. Half of my work is to solve funciton of physics and the left time is to develop.
 
 the main market for our products is japan and us.
 
@@ -104,9 +111,11 @@ Strengths:
 - I am trustworthy
 - I am reliable
 - I have a strong sense of responsibility
+- Open minded and willing to take challenge
 
 
 Weaknesses:
+my biggest weakness is public speaking.
 
 - Why do you move around so much?
 I wanted to acquire as much knowledge as possible.
@@ -115,6 +124,32 @@ I wanted to acquire as much knowledge as possible.
 Can you tell me what kind of projects that I will be involved if I got an offer on this job?
 Will there be any in-hours training from the company?
 
+- where do you see yourself in five years?
+
+Job Summary
+Building on market leading virtual Evolved Packet Core (EPC) applications, Ericsson is dedicated to supporting our customers on a smooth evolution from EPC to dual mode core operations, 5G EPC and 5GC. We ensure flexibility, fast time to market and efficiency in operations. On the way, Ericsson Cloud Packet Core - which supports more than 100 commercial virtual EPC customer networks - today provides a variety of use cases.
+Responsibilities:
+· Participate in product requirement analysis, feasibility study, implementation proposal, proposing test strategy and test analysis;
+· Specify, develop, set up and maintain a design environment;
+· Program SW modules / blocks;
+· Prepare test specification, execute test cases, issue trouble reports and follow up Trouble Report status;
+· Perform Trouble Shooting, Customer Support and Product Deployment;
+· Contribute to continuous Improvements of Products and Processes;
+· Develop Domain Specific Technical Competence and Knowledge;
+· Support team for troubleshooting and competence development.
+Requirements for Product Developer:
+· University Bachelor or master’s degree in any of the following majors: Software Engineering, Computer Science, Telecommunications or Electrical Engineering is required;
+· Project experience in relevant domain with solid understanding on TCP/IP network;
+· Knowledge of Telecommunications (GSM/GPRS, WCDMA and LTE systems) network, especially packet core part is an advantage;
+· Solid programming skill on C/C++ etc.;
+· Familiar with LINUX platform and its administration, LINUX script and tools ;
+· Familiar with Agile software development is an advantage;
+· Experience on Erlang programing is an advantage;
+· Have the passion to develop high quality software;
+· Ability to learn new technology quickly and apply to work tasks;
+· Innovative and solution thinking abilities;
+· Open minded and willing to take challenge;
+· Good English communication skills (both in written and verbal), able to express own thinking clearly.
 
 工作中，通过物理分析，求解数学方程，使用python进行快速原型，最后C/C++代码落地。
 
@@ -135,3 +170,10 @@ PDE(偏微分方程)
 
 培养了严谨，经常要大量分析数据，不能有一丝一毫的差别
 经过工程化的培养
+
+5G
+- 频率高
+- 波长短
+- 衰减快
+- Ｍassive MIMO（多天线技术）
+- 波 束 赋 形

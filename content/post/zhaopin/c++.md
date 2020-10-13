@@ -46,7 +46,7 @@ cout << "int, decay(const int) " << std::is_same<int, typename decay<const int>:
 
 
 # POD (plain old data)
-C++98 不允许联合体的成员是非 POD 类型，但是 C++1 1 取消了这种限制。
+C++98 不允许联合体的成员是非 POD 类型，但是 C++11 取消了这种限制。
 
 POD 类型一般具有以下几种特征（包括 class、union 和 struct等）：
 
