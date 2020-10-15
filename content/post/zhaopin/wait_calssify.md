@@ -74,6 +74,7 @@ I am experienced C/C++ and familiar with linux and tcp/ip protocol.
 
 I am reliable and hark-working. Also I am open and willing to learn.
 I hope you can give me the chance.
+I am open and willing to learn. I am a team player. Also I am able to work under great pressure. I hope you can give me the chance.
 
 For me, my biggest advantage is cooperationg with others and I think I'm a good team player and I'm a person of great honesty to ohters. Also I am able to work under great pressure. I hope you can give me the chance.
 
@@ -83,9 +84,7 @@ I know how to find the answer, and I will find the answer.
 工作内容
 My main job is to develop and maintain the MEMS CAE software suit. The software is used to do mulit-physics analysis. The software by solving physics equations, like Newton's Law, to simulate the deformation of the object which at some situation, for example force, electric and so on. The software can reduce the time and money for the progress. So my work mainly consist of two parts: solve function of physics and use coding to accomplish the idea. Half of my work is to solve funciton of physics and the left time is to develop.
 
-the main market for our products is japan and us.
-
-so our email and document is written in english.
+the main market for our products is japan and us. so our email and document is written in english.
 
 power engineering
 
@@ -176,4 +175,4 @@ PDE(偏微分方程)
 - 波长短
 - 衰减快
 - Ｍassive MIMO（多天线技术）
-- 波 束 赋 形
+- 波束赋形
