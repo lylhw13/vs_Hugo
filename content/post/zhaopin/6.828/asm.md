@@ -4,9 +4,12 @@ date: 2020-10-31T17:51:58+08:00
 draft: true
 ---
 
-MBR: main boot sector
+MBR: main boot sector 主引导扇区
 VRAM: Video RAM 显存
-LBA: Logical Block Address
+LBA: Logical Block Address 逻辑块地址
+ICH: I/O Controller Hub 输入输出控制设备集中器
+VHD: Virtaul Hard Disk 虚拟硬盘
+CHS: Cylinder Head Sector 柱面 磁头 扇区
 
 目的操作数必须用方括号围起来，以表明它是一个地址，处理器应该用这个地址再次访问内存
 
