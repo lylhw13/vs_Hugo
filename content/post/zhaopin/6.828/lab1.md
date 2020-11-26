@@ -4,6 +4,51 @@ date: 2020-11-19T10:56:04+08:00
 draft: true
 ---
 
+```sh
+cd lab
+make qemu-gdb
+```
+
+```sh
+cd lab
+make gdb
+```
+
+```gdb
+ si (Step Instruction)
+```
+
++------------------+  <- 0xFFFFFFFF (4GB)
+|      32-bit      |
+|  memory mapped   |
+|     devices      |
+|                  |
+/\/\/\/\/\/\/\/\/\/\
+
+/\/\/\/\/\/\/\/\/\/\
+|                  |
+|      Unused      |
+|                  |
++------------------+  <- depends on amount of RAM
+|                  |
+|                  |
+| Extended Memory  |
+|                  |
+|                  |
++------------------+  <- 0x00100000 (1MB)
+|     BIOS ROM     |
++------------------+  <- 0x000F0000 (960KB)
+|  16-bit devices, |
+|  expansion ROMs  |
++------------------+  <- 0x000C0000 (768KB)
+|   VGA Display    |
++------------------+  <- 0x000A0000 (640KB)
+|                  |
+|    Low Memory    |
+|                  |
++------------------+  <- 0x00000000
+
+
 NASM uses the so-called Intel syntax while GNU uses the AT&T syntax. 
 
 The labs use GNU assembler.
@@ -33,3 +78,4 @@ Typically, the link and load addresses are the same.
 virtual address ("vaddr"), the physical address ("paddr")
 
 The boot loader uses the ELF program headers to decide how to load the sections. 
+
