@@ -19,6 +19,8 @@ Refer to [让 Homebrew 走代理更新](https://www.logcg.com/archives/1617.html
 临时调用代理的话
 ```sh
 export ALL_PROXY=socks5://127.0.0.1:1086
+
+alias setproxy='export ALL_PROXY=socks5://127.0.0.1:1086'
 ```
 
 写入终端配置的话：
