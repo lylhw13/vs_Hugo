@@ -12,3 +12,11 @@ objdump得到的是纯 .text 的值
 
 想要得到具体的值，可以使用
 `size -A simplesection.o`
+
+# 反汇编
+objdump 默认输出是 AT&T 的语法格式
+
+```sh
+objdump -d test.o           // 默认输出 AT&T 格式
+objdump -M intel -d test.o  // 输出 intel 的语法格式
+```
