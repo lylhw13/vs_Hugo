@@ -262,3 +262,5 @@ As far as I understand, crt comes in two "flavors"
 crt1 is used on systems that support constructors and destructors (functions called before and after main and exit). In this case main is treated like a normal function call.
 crt0 is used on systems that do not support constructors/destructors.
 
+If people disable ctors/dtors, then crt1.o should be a copy of crt0.o.  That works nicely as well.
+

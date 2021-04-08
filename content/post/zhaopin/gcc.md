@@ -64,4 +64,6 @@ g++: GNU C++ Compiler
        This enables some extra warning flags that are not enabled by -Wall.
        (This option used to be called -W.  The older name is still supported, but
        the newer name is more descriptive.)
+
+-pthread      // 添加对 POSIX 线程库的支持
 ```
