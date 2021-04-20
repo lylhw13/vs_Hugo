@@ -46,26 +46,6 @@ malloc/free
     struct T x; // C 中是正确的，表示“S::T x;”, 但在 C++ 中是错误的。
     ```
 
-# 判断大端小端
-
-如果是小端序，转型后为1，否则为0
-指针指在起始的位置上，小端序是先遇到小端，所以小端在起始位置上。
-```c++
-    int num = 0x01;
-
-    cout << ((char)num == 1)<< endl;
-    cout << (*(char *)(&num) == 1) << endl;
-    
-    union UN{
-        int a;
-        char b;
-    };
-    
-    UN un;
-    un.a = num;
-    cout << (un.a == 1) << endl;
-```
-
 # qsort
 
 ```c

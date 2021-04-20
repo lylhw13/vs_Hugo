@@ -102,7 +102,6 @@ extern "C" 的作用是让 C++ 编译器将 extern "C" 声明的代码当作 C �
 # 绝不能在构造和析构过程中调用virtual函数
 
 因为derived class对象内的base class 成分会在derived class 自身成分被构造之前先构造妥当。base class 构造期间的 virtual 函数绝不会下降到 derived class阶层。
-
 因此，此时 derived class在构造和析构内的virtual函数，其实调用的是 base class 的版本。
 
 # 析构函数要声明为virtual 函数
@@ -128,15 +127,6 @@ Destruction is done "derived class before base class", so virtual functions beha
 三个阶段: 分配空间，初始化，赋值
 
 对象初始化过程中，主要涉及三种执行对象初始化的结构，分别是 实例变量初始化、实例代码块初始化 以及 构造函数初始化。
-
-# static 关键字
-
-C语言：
-1. 用于函数内部修饰变量，起到持久化的作用。
-2. 用在文件级别（函数体外），修饰变量或函数，表示该变量或函数只在本文件可见。起到隐藏的作用。
-C++引入class，在保持和C语言兼容的同时，又添加两种新用法
-3. 用于修饰class的数据成员，即所谓“静态成员”。静态数据成员每个class只有一份
-4. 用于修饰class的成员函数，即所谓“静态成员函数”。这种函数只能访问静态成员和静态成员函数。
 
 # 纯虚函数
 
@@ -212,8 +202,6 @@ little定律：
 有大型软件开发维护经验
 
 
-
-
 # struct中长度为零的数组
 struct 一个长度为0的数组，又叫柔性数组，只能放在结构体末尾，它可以使得这个结构体是可变长的。
 对于编译器来说，此时长度为0的数组并不占用空间，因为数组名本身不占空间，它只是一个偏移量， 数组名这个符号本身代表了一个不可修改的地址常量。
@@ -264,3 +252,29 @@ crt0 is used on systems that do not support constructors/destructors.
 
 If people disable ctors/dtors, then crt1.o should be a copy of crt0.o.  That works nicely as well.
 
+
+## std::vector vs std::array
+std::vector
+- a template class that encapsulate a dynamic array
+- 创建在 heap 上
+- 可以自由伸缩
+
+std::array
+- a template class that encapsulate a statically-sized array
+- 在编译期须知的固定长度
+- 保存在对象内部，如果对象创建在 stack 上，std::array 将也创建在 stack 上
+- 不能隐式转换为指针
+- 支持 STL 相关的函数
+- 是 array 的轻包装函数，因此效率比 std::vector 高
+
+参考[std::vector versus std::array in C++](https://stackoverflow.com/questions/4424579/stdvector-versus-stdarray-in-c)
+
+## std::vector vs std::deque
+
+std::vector
+- 保证内存空间连续
+
+std::deque
+- 分散的连续内存空间，通过指针加偏移会导致为定义的结果
+- 适用于两端插入删除的情况，在具有较多中间插入删除的情况下，效率不如 list
+- 在较长的序列的情况下，比 vector 有更好的效率，因为 vector 序列增长的代价更大

@@ -20,3 +20,16 @@ objdump 默认输出是 AT&T 的语法格式
 objdump -d test.o           // 默认输出 AT&T 格式
 objdump -M intel -d test.o  // 输出 intel 的语法格式
 ```
+
+## 步骤
+产生汇编代码步骤
+### 方法1 反汇编
+```sh
+gcc -Og -c test.c
+objdump -d test.o
+```
+
+### 方法2 直接生成
+```sh
+gcc -Og -S test.c
+```
